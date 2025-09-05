@@ -1,0 +1,7 @@
+version: "3"
+tasks:
+  init:
+    desc: "Initialize the Weather frontend"
+    cmds:
+      - echo "Initializing the Weather frontend..."
+      - pnpm install

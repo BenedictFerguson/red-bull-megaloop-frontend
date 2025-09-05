@@ -1,0 +1,49 @@
+.app {
+  @apply w-full flex flex-col;
+
+  --state-of-play-container-background: #37302a;
+  background: var(
+    --panel__background,
+    var(--state-of-play-container-background, #f8f8f8)
+  );
+
+  .app-container {
+    @apply h-full ml-4 flex flex-col justify-center w-app-container-small-width;
+
+    @media only screen and (min-width: 650px) {
+      @apply ml-10 w-app-container-medium-width;
+    }
+
+    @media only screen and (min-width: 1000px) {
+      @apply ml-16 w-app-container-large-width;
+    }
+
+    @media only screen and (min-width: 1600px) {
+      @apply w-app-container-x-large-width ml-app-container-x-large-margin-left;
+    }
+  }
+
+  &.top-large {
+    padding-top: var(--cosmos-spacing-xx-loose);
+  }
+
+  &.top-medium {
+    padding-top: var(--cosmos-spacing-x-loose);
+  }
+
+  &.top-small {
+    padding-top: var(--cosmos-spacing-loose);
+  }
+
+  &.bottom-large {
+    padding-bottom: var(--cosmos-spacing-xx-loose);
+  }
+
+  &.bottom-medium {
+    padding-bottom: var(--cosmos-spacing-x-loose);
+  }
+
+  &.bottom-small {
+    padding-bottom: var(--cosmos-spacing-loose);
+  }
+}

@@ -1,0 +1,35 @@
+version: "3"
+
+tasks:
+    ## Release operations
+    ## TODO
+
+    ## Environment operations
+    init:
+        desc: 'Initialises the project for you so that you can start development'
+        dir: devops/taskfile/local-setup
+        cmds:
+            - echo "Initialising the project..."
+            - task setup-nodeenv
+            - task setup-pnpm
+            - task pull-secrets
+            - task setup-live-scoring-frontend
+            - task setup-weather-frontend
+
+    dev-live:
+        desc: 'Starts the Live Scoring development environment'
+        dir: devops/dev
+        cmds:
+            - task start-live-scoring
+
+    dev-weather:
+        desc: 'Starts the Weather development environment'
+        dir: devops/dev
+        cmds:
+            - task start-weather
+
+    dev:
+        desc: 'Starts the all development environment apps in parallel'
+        dir: devops/dev
+        cmds:
+            - task start

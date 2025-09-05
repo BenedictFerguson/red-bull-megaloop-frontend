@@ -1,0 +1,7 @@
+version: "3"
+tasks:
+  init:
+    desc: "Initialize the Live Scoring frontend"
+    cmds:
+      - echo "Initializing the Live Scoring frontend..."
+      - pnpm install

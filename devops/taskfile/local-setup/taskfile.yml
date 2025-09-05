@@ -1,0 +1,36 @@
+version: '3'
+
+env:
+  NODE_VERSION: 22.13.0
+
+tasks:
+  setup-nodeenv:
+    desc: 'Set up the node environment for the project'
+    dir: ../../..
+    cmds:
+      - fnm use ${NODE_VERSION}
+
+  setup-pnpm:
+    desc: 'Set up pnpm for the project'
+    cmds:
+      - npm install --global corepack@latest
+      - corepack prepare pnpm@10.1.0 --activate
+      - pnpm install
+
+  setup-weather-frontend:
+    desc: 'Set up the weather frontend for the project'
+    dir: ../../../apps/weather-frontend
+    cmds:
+      - task init
+
+  setup-live-scoring-frontend:
+    desc: 'Set up the live scoring frontend for the project'
+    dir: ../../../apps/live-scoring-frontend
+    cmds:
+      - task init
+
+  pull-secrets:
+    desc: "Pulls the secrets from the 1Password vault"
+    dir: ../../dev
+    cmds:
+      - ./scripts/pull_secrets.sh

@@ -1,0 +1,31 @@
+version: "3"
+
+includes:
+    helpers:
+        taskfile: ../taskfile/helpers.taskfile.yml
+        internal: true
+
+tasks:
+    start:
+        desc: "Starts the all development environment apps in parallel"
+        cmds:
+            - task start-weather & (sleep 5; task start-live-scoring)
+
+    stop:
+        desc: "Stops the all development environment apps in parallel"
+        cmds:
+            - echo "Stopping all development environment apps..."
+
+    start-weather:
+        desc: "Starts the Weather rspack dev server"
+        dir: ../../apps/weather-frontend
+        cmds:
+            - echo "Starting Weather dev environment..."
+            - pnpm run start:dev
+
+    start-live-scoring:
+        desc: "Starts the Live Scoring rspack dev server"
+        dir: ../../apps/live-scoring-frontend
+        cmds:
+            - echo "Starting State of Play dev environment..."
+            - pnpm run start:dev

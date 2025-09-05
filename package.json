@@ -1,0 +1,21 @@
+{
+    "name": "red-bull-cerro-abajo-frontend",
+    "version": "0.0.1",
+    "description": "Red Bull - Cerro Abajo Frontend",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "check": "biome check --write",
+        "format": "biome format --write"
+    },
+    "keywords": ["custom", "red-bull", "react"],
+    "author": "Entrostat",
+    "license": "UNLICENSED",
+    "devDependencies": {
+        "@biomejs/biome": "^1.9.4"
+    },
+    "pnpm": {
+        "onlyBuiltDependencies": ["@biomejs/biome"]
+    },
+    "packageManager": "pnpm@10.1.0+sha512.c89847b0667ddab50396bbbd008a2a43cf3b581efd59cf5d9aa8923ea1fb4b8106c041d540d08acb095037594d73ebc51e1ec89ee40c88b30b8a66c0fae0ac1b"
+}

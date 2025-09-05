@@ -1,0 +1,58 @@
+/*Reference: https://szhsin.github.io/react-accordion/docs/headless-ui/styles */
+.accordion {
+  @apply mb-6;
+}
+
+.accordion-item {
+  @apply border-b-2 border-[var(--cosmos-color-surface-glass-light-10)] border-t-0 border-solid;
+}
+
+.accordion-item:not(.accordion-item ~ .accordion-item) {
+  @apply border-t-2 border-solid;
+}
+
+.accordion-button {
+  @apply cursor-pointer flex items-center w-full p-6 text-base font-normal text-left
+  text-[var(--ifm-font-color-base)] bg-transparent border-none transition-colors
+  duration-200 [transition-timing-function:cubic-bezier(0,0,0,1)];
+}
+
+.accordion-buttonExpanded {
+  @apply shadow-inner bg-[var(--accordion-background)];
+}
+
+.accordion-button:hover {
+  @apply shadow-[0_0_0_1px_var(--ifm-color-primary)];
+}
+
+.accordion-button:disabled {
+  @apply shadow-none cursor-auto text-gray-500;
+}
+
+.accordion-button:focus {
+  @apply relative outline-none;
+}
+
+.accordion-button:focus-visible {
+  @apply shadow-[0_0_0_3px_var(--ifm-color-primary)];
+}
+
+@supports not selector(:focus-visible) {
+  .accordion-button:focus {
+    @apply shadow-[0_0_0_3px_var(--ifm-color-primary)];
+  }
+}
+
+.accordion-icon {
+  @apply flex-shrink-0 ml-auto transition-transform duration-200 ease-in-out
+  w-8 h-8 p-2 rounded-full text-[var(--cosmos-color-text-light)]
+  bg-[var(--cosmos-color-surface-glass-light-10)];
+}
+
+.accordion-content {
+  @apply transition-[height] duration-500 [transition-timing-function:cubic-bezier(0,0,0,1)] overflow-hidden;
+}
+
+.accordion-panel {
+  @apply p-3;
+}

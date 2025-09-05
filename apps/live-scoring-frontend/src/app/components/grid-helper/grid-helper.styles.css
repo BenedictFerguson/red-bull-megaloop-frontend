@@ -1,0 +1,63 @@
+/* Ignore none tailwind styles here - this is purely a helper component */
+.grid-helper {
+    pointer-events: none;
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    .rbx-grid-helper__container {
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        max-width: 1600px;
+        display: flex;
+    }
+
+    .rbx-grid-helper__outer-gutter {
+        width: 64px;
+    }
+
+    .rbx-grid-helper__inner-gutter {
+        width: 24px;
+    }
+
+    .rbx-grid-helper__column {
+        flex: 1 1 auto;
+        outline: 1px solid red;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        .rbx-grid-helper__outer-gutter {
+            width: 40px;
+        }
+
+        .rbx-grid-helper__inner-gutter {
+            width: 20px;
+        }
+
+        .rbx-grid-helper__container
+        .rbx-grid-helper__inner-gutter:nth-child(n + 17),
+        .rbx-grid-helper__container .rbx-grid-helper__column:nth-child(n + 17) {
+            display: none;
+        }
+    }
+
+    @media only screen and (max-width: 650px) {
+        .rbx-grid-helper__outer-gutter {
+            width: 16px;
+        }
+
+        .rbx-grid-helper__inner-gutter {
+            width: 12px;
+        }
+
+        .rbx-grid-helper__container
+        .rbx-grid-helper__inner-gutter:nth-child(n + 13),
+        .rbx-grid-helper__container .rbx-grid-helper__column:nth-child(n + 13) {
+            display: none;
+        }
+    }
+}

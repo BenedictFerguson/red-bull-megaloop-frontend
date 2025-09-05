@@ -1,0 +1,39 @@
+version: '3'
+
+tasks:
+    run-with-trap:
+        silent: true
+        internal: true
+        vars:
+            INTERRUPT_TARGET: '{{ default "stop-nothing" .INTERRUPT_TARGET }}'
+            MAIN_TARGET: '{{ default "do-nothing" .MAIN_TARGET }}'
+        cmds:
+            - bash -c "trap 'task {{.INTERRUPT_TARGET}}' EXIT; task {{.MAIN_TARGET}}"
+
+    do-nothing:
+        internal: true
+        silent: true
+        cmds:
+            - echo "Doing nothing..."
+
+    stop-nothing:
+        silent: true
+        internal: true
+        cmds:
+            - echo "Stopping nothing..."
+
+    wait-on:
+        internal: true
+        vars:
+            TARGET: '{{ default "UNDEFINED_TARGET_PLEASE_SET_THIS_VARIABLE" .TARGET }}'
+        silent: true
+        cmds:
+            - |
+                path_to_executable=$(which wait-on || true)
+                if [ -x "$path_to_executable" ] ; then
+                  echo "wait-on is already installed! Using the existing binary..."
+                  wait-on --log {{.TARGET}}
+                else
+                  echo "wait-on is not installed! Using a temporary binary..."
+                  pnpm dlx wait-on --log {{.TARGET}}
+                fi
