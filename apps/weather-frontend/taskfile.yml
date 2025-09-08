@@ -5,3 +5,10 @@ tasks:
     cmds:
       - echo "Initializing the Weather frontend..."
       - pnpm install
+
+  start:
+    desc: "Starts the rspack dev server"
+    dir: ./
+    cmds:
+      - echo "Starting dev environment..."
+      - pnpm run start:dev
