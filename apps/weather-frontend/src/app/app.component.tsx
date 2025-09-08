@@ -9,6 +9,7 @@ import { RouterProvider } from 'react-router';
 import type { CustomScriptLocalisations } from '@types';
 import LocalisationsContext from '../contexts/localisations.context';
 import GridHelper from '@app/components/grid-helper/grid-helper.component';
+import { TenantCredentials } from '@shared/models/tenant-credentials.model';
 
 export type AppProps = {
     topSpacing: string;
@@ -16,6 +17,7 @@ export type AppProps = {
     apiUrl: string;
     assetUrl: string;
     assetId: string;
+    tenantCredentials: TenantCredentials;
     localisations: CustomScriptLocalisations;
     showGridLines?: boolean;
 };
@@ -27,6 +29,7 @@ const App: React.FC<AppProps> = ({
     apiUrl,
     assetUrl,
     assetId,
+    tenantCredentials,
     localisations,
     showGridLines = false,
 }: AppProps) => {
@@ -42,6 +45,7 @@ const App: React.FC<AppProps> = ({
     const setApiUrl = useAppStore((state) => state.setApiUrl);
     const setAssetUrl = useAppStore((state) => state.setAssetUrl);
     const setAssetId = useAppStore((state) => state.setAssetId);
+    const setTenantCredentials = useAppStore((state) => state.setTenantCredentials);
 
     useEffect(() => {
         if (!isNil(apiUrl) && !isEmpty(apiUrl)) {
@@ -68,6 +72,15 @@ const App: React.FC<AppProps> = ({
     }, [
         assetId,
         setAssetId,
+    ]);
+
+    useEffect(() => {
+        if (!isEmpty(tenantCredentials)) {
+            setTenantCredentials(tenantCredentials);
+        }
+    }, [
+        tenantCredentials,
+        setTenantCredentials,
     ]);
 
     return (

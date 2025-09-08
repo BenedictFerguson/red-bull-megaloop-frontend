@@ -4,6 +4,7 @@ import { createJSONStorage, devtools } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 import { ComponentState } from '@enums/component-state.enum.ts';
 import type {AppState} from "@stores/app/app.state.ts";
+import { BaseTenantCredentials } from '@shared/models/tenant-credentials.model';
 
 const storeMiddleware = (state: StateCreator<AppState, [], []>) =>
     devtools(
@@ -54,6 +55,14 @@ export const useAppStore = create<AppState>()(
                     state.hasError =
                         componentState === ComponentState.ERROR;
                 }),
+            ),
+
+        tenantCredentials: BaseTenantCredentials,
+        setTenantCredentials: (newTenantCredentials: TenantCredentials) => 
+            set(
+                produce<AppState>((state) => {
+                    state.tenantCredentials = newTenantCredentials;
+                })
             ),
 
         resetAppState: () =>
