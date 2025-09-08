@@ -13,7 +13,7 @@ export class WeatherResultsService {
         return WeatherResultsService.instance;
     }
 
-    public async historicKsnWindResults() {
+    public async historicKsnWindResults(): Promise<any[]> {
         const { apiUrl, tenantCredentials } = useAppStore.getState(); // Access store outside React components
         const { tenantClientId, tenantSecret } = tenantCredentials;
         console.warn({tenantCredentials})
@@ -45,6 +45,7 @@ export class WeatherResultsService {
             isLoading: false,
         }
 
+        // TODO: NB change return type of response on backend
         if (
             getWeatherDataResponse.statusCode >= 400 ||
             getWeatherDataResponse.success === false
@@ -56,7 +57,9 @@ export class WeatherResultsService {
             // })
             return
         }
+        return getWeatherDataResponse
 
+        console.warn(getWeatherDataResponse)
         // TODO: Process data
     }
 

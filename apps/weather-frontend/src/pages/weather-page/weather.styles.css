@@ -1,3 +1,5 @@
 .weather-container {
-  @apply w-full h-full;
+  @apply w-full h-full grid grid-cols-[1fr_2fr] max-h-screen;
+  @apply h-dvh;
+  background-color: rgb(29,53,62);
 }

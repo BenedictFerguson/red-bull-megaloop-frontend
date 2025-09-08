@@ -1,0 +1,3 @@
+.latest-weather-container {
+    @apply border-2 border-gray-200 rounded-lg shadow-md bg-neutral-600;
+}
