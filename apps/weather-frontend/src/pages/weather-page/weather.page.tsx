@@ -3,6 +3,7 @@ import { useAppStore } from '@stores/app/app.store';
 import type React from 'react';
 import { useEffect } from 'react';
 import {AppState} from "@stores/app/app.state.ts";
+import {WeatherResultsService} from "@services/weather-results.service.ts";
 
 const WeatherPage: React.FC<Record<string, never>> = () => {
     const componentState = useAppStore((state: AppState) => state.componentState);
@@ -10,12 +11,15 @@ const WeatherPage: React.FC<Record<string, never>> = () => {
 
     const apiUrl = useAppStore((state: AppState) => state.apiUrl);
     const assetId = useAppStore((state: AppState) => state.assetId);
+    const tenantCredentials = useAppStore((state: AppState) => state.tenantCredentials);
 
     useEffect(() => {
         // EventService.getInstance().fetchEvents(apiUrl, assetId).then();
+        // WeatherResultsService.getInstance().historicKsnWindResults()
+        WeatherResultsService.getInstance().getLatestKsnWindWeatherData()
     }, [
         apiUrl,
-        assetId,
+        tenantCredentials,
     ]);
 
     return (
