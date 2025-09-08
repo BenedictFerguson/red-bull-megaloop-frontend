@@ -2,15 +2,15 @@ import { produce } from 'immer';
 import { create, type StateCreator } from 'zustand';
 import { createJSONStorage, devtools } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
-import { ComponentState } from '@enums/component-state.enum.ts';
-import type {AppState} from "@stores/app/app.state.ts";
+import { ComponentState } from '@enums/component-state.enum';
+import type { AppState } from '@stores/app/app.state';
 import { BaseTenantCredentials } from '@shared/models/tenant-credentials.model';
 
 const storeMiddleware = (state: StateCreator<AppState, [], []>) =>
     devtools(
         immer(
             state, {
-                name: 'stateOfPlayAppStore',
+                name: 'weather-app-state',
                 storage: createJSONStorage(() => sessionStorage),
             }
         ),
