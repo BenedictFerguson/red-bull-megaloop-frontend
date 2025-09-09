@@ -1,7 +1,7 @@
-import {useAppStore} from "@stores/app/app.store.tsx";
-import isEmpty from "lodash/isEmpty";
-import {IntegratorEnum} from "@constants/integrator.enum.ts";
-import isNil from "lodash/isNil";
+import { useAppStore } from '@stores/app/app.store';
+import isEmpty from 'lodash/isEmpty';
+import { IntegratorEnum } from '@constants/integrator.enum';
+import isNil from 'lodash/isNil';
 import { useLatestWeatherStore } from '@stores/latest-weather/latest-weather.store';
 
 export class WeatherResultsService {
