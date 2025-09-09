@@ -6,11 +6,6 @@ import { AppState } from '@stores/app/app.state';
 import { CosmosIconImage, CosmosSpinner, CosmosText } from '@cosmos/web-scoped/react';
 import { useLatestWeatherStore } from '@stores/latest-weather/latest-weather.store';
 import { LatestWeatherState } from '@stores/latest-weather/latest-weather.state';
-import isEmpty from 'lodash/isEmpty';
-
-type LatestWeatherProps = {
-
-}
 
 function convertWindDirectionInDegreesToCompassValues(angle: number) {
     const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
@@ -18,7 +13,7 @@ function convertWindDirectionInDegreesToCompassValues(angle: number) {
     return directions[index];
 }
 
-const LatestWeatherComponent = ({}: LatestWeatherProps) => {
+const LatestWeatherComponent: React.FC = () => {
     const apiUrl = useAppStore((state: AppState) => state.apiUrl);
     const tenantCredentials = useAppStore((state: AppState) => state.tenantCredentials);
 
