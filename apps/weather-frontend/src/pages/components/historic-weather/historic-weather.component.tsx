@@ -14,29 +14,22 @@ import {
 import { useAppStore} from '@stores/app/app.store';
 import { AppState} from '@stores/app/app.state';
 import { WeatherResultsService } from '@services/weather-results.service';
-import isEmpty from 'lodash/isEmpty';
 import { useHistoricWeatherStore } from '@stores/historic-weather/historic-weather.store';
 import { HistoricWeatherState } from '@stores/historic-weather/historic-weather.state';
 
 const HistoricWeatherComponent = () => {
     const apiUrl = useAppStore((state: AppState) => state.apiUrl);
     const tenantCredentials = useAppStore((state: AppState) => state.tenantCredentials);
-    const setData = useHistoricWeatherStore((state: HistoricWeatherState) => state.setData);
-    const historicData = useHistoricWeatherStore((state: HistoricWeatherState) => state.data);
 
-    const data = useMemo(() => historicData, [historicData]);
     useEffect(() => {
-        WeatherResultsService.getInstance().historicKsnWindResults().then((value) => {
-            if (isEmpty(value)) {
-                console.debug('No data returned');
-                return;
-            }
-            setData(value);
-        }, (rejected) => {})
+        WeatherResultsService.getInstance().getHistoricKsnWindResults();
     }, [
         apiUrl,
         tenantCredentials,
     ]);
+
+    const historicData = useHistoricWeatherStore((state: HistoricWeatherState) => state.data);
+    const data = useMemo(() => historicData, [historicData]);
 
     return (
         <div className="historic-weather-container">
