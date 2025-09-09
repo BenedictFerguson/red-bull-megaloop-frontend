@@ -1,4 +1,6 @@
 .historic-weather-container {
-    width: 100%;
-    height: 100%;
+    @apply bg-[var(--cosmos-color-surface-glass-light-5,rgba(255,255,255,0.05))];
+    @apply rounded-[var(--cosmos-radius-large,8px)];
+    @apply w-full h-full;
+
 }
