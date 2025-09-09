@@ -1,5 +1,9 @@
 import { TimeLineWind } from '@shared/models/historic-results-response.model';
 
+export interface HistoricData extends TimeLineWind {
+    date: number;
+}
+
 export interface HistoricWeatherActions {
     setData: (data: TimeLineWind[]) => void;
     setIsLoading: (isLoading: boolean) => void;
@@ -8,7 +12,7 @@ export interface HistoricWeatherActions {
 }
 
 export interface HistoricWeatherState extends HistoricWeatherActions {
-    data: TimeLineWind[];
+    data: HistoricData[];
     isLoading: boolean;
     hasError: boolean;
 }

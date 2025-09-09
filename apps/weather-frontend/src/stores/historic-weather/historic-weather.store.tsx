@@ -1,6 +1,6 @@
 import { create, type StateCreator } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { HistoricWeatherState } from '@stores/historic-weather/historic-weather.state';
+import {HistoricData, HistoricWeatherState} from '@stores/historic-weather/historic-weather.state';
 import { TimeLineWind } from '@shared/models/historic-results-response.model';
 
 /**
@@ -25,6 +25,14 @@ export const useHistoricWeatherStore = create<HistoricWeatherState>()(
         setIsLoadingHasError: (isLoading: boolean, hasError: boolean) => set({ isLoading, hasError }),
 
         data: [],
-        setData: (data: TimeLineWind[]) => set({ data }),
+        setData: (data: TimeLineWind[]) => {
+                const formattedTimeData: HistoricData[] = data.map((entry: TimeLineWind) => {
+                        return {
+                                ...entry,
+                                date: new Date(entry.dateTime).valueOf(),
+                        }
+                })
+                return set({data: formattedTimeData})
+        },
     })),
 );
