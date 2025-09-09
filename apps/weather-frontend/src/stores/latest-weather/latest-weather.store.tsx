@@ -1,6 +1,7 @@
 import { create, type StateCreator } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { LatestWeatherState, Results } from '@stores/latest-weather/latest-weather.state';
+import { LatestWeatherState } from '@stores/latest-weather/latest-weather.state';
+import { KsnWindLatestResults } from '@shared/models/latest-results-reponse.model';
 
 /**
  * The Historic Weather Store middleware
@@ -15,6 +16,14 @@ const storeMiddleware = (state: StateCreator<LatestWeatherState, [], []>) =>
 
 export const useLatestWeatherStore = create<LatestWeatherState>()(
     storeMiddleware((set, get) => ({
+        isLoading: false,
+        setIsLoading: (isLoading: boolean) => set({ isLoading }),
+
+        hasError: false,
+        setHasError: (hasError: boolean) => set({ hasError }),
+
+        setIsLoadingHasError: (isLoading: boolean, hasError: boolean) => set({ isLoading, hasError }),
+
         dateTime: '',
         gustSpeed: {
             avg: 0,
@@ -39,6 +48,6 @@ export const useLatestWeatherStore = create<LatestWeatherState>()(
             min: 0,
             current: 0,
         },
-        setResults: (results: Results) => set({ ...results }),
+        setResults: (results: KsnWindLatestResults) => set({ ...results }),
     })),
 );

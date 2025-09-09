@@ -3,7 +3,7 @@ import './latest-weather.styles.css'
 import { WeatherResultsService } from '@services/weather-results.service';
 import { useAppStore } from '@stores/app/app.store';
 import { AppState } from '@stores/app/app.state';
-import { CosmosIconImage, CosmosText } from '@cosmos/web-scoped/react';
+import { CosmosIconImage, CosmosSpinner, CosmosText } from '@cosmos/web-scoped/react';
 import { useLatestWeatherStore } from '@stores/latest-weather/latest-weather.store';
 import { LatestWeatherState } from '@stores/latest-weather/latest-weather.state';
 import isEmpty from 'lodash/isEmpty';
@@ -22,26 +22,27 @@ const LatestWeatherComponent = ({}: LatestWeatherProps) => {
     const apiUrl = useAppStore((state: AppState) => state.apiUrl);
     const tenantCredentials = useAppStore((state: AppState) => state.tenantCredentials);
 
-    const setResults = useLatestWeatherStore((state: LatestWeatherState) => state.setResults);
+    useEffect(() => {
+        WeatherResultsService.getInstance().getLatestKsnWindWeatherData();
+    }, [
+        apiUrl,
+        tenantCredentials,
+    ]);
 
+    const isLoadingLatestWeather = useLatestWeatherStore((state: LatestWeatherState) => state.isLoading);
     const gustSpeed = useLatestWeatherStore((state: LatestWeatherState) => state.gustSpeed.current);
     const windSpeed = useLatestWeatherStore((state: LatestWeatherState) => state.windSpeed.current);
     const windDirection = useLatestWeatherStore((state: LatestWeatherState) => state.windDirection.current);
     const windChill = useLatestWeatherStore((state: LatestWeatherState) => state.windChill);
     const temperature = useLatestWeatherStore((state: LatestWeatherState) => state.temperature.actual);
 
-    useEffect(() => {
-        WeatherResultsService.getInstance().getLatestKsnWindWeatherData().then((value) => {
-            if (isEmpty(value?.results)) {
-                console.debug('No results found');
-                return;
-            }
-            setResults(value?.results)
-        })
-    }, [
-        apiUrl,
-        tenantCredentials,
-    ]);
+    if (isLoadingLatestWeather) {
+        return (
+            <div className="latest-weather-container h-[300px] justify-center">
+                <CosmosSpinner appearance="light" />
+            </div>
+        )
+    }
 
     return (
         <div className="latest-weather-container">

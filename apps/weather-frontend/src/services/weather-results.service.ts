@@ -2,7 +2,7 @@ import {useAppStore} from "@stores/app/app.store.tsx";
 import isEmpty from "lodash/isEmpty";
 import {IntegratorEnum} from "@constants/integrator.enum.ts";
 import isNil from "lodash/isNil";
-import {KsnWindLatestResults, KsnwindLatestResultsResponse} from "@shared/models/latest-results-reponse.model.ts";
+import { useLatestWeatherStore } from '@stores/latest-weather/latest-weather.store';
 
 export class WeatherResultsService {
     private static instance: WeatherResultsService;
@@ -62,18 +62,27 @@ export class WeatherResultsService {
         // TODO: Process data
     }
 
-    public async getLatestKsnWindWeatherData(): Promise<KsnWindLatestResults | null> {
+    public async getLatestKsnWindWeatherData(): Promise<void> {
         const { apiUrl, tenantCredentials } = useAppStore.getState(); // Access store outside React components
         const { tenantClientId, tenantSecret } = tenantCredentials;
 
         if (isEmpty(tenantClientId) || isEmpty(tenantSecret)) {
             console.error('Cannot request data with missing tenant credentials.');
-            return null;
+            return;
         }
-        // this.setState({
-        //     hasError: false,
-        //     isLoading: true,
-        // })
+
+        const { isLoading, dateTime, setIsLoadingHasError, setResults } = useLatestWeatherStore.getState();
+
+        if (isLoading) {
+            console.error('Data is already loading');
+            return;
+        }
+
+        if (!isNil(dateTime)) {
+            console.debug('TODO: Determine if we NEED to re-request the data here.')
+        }
+
+        setIsLoadingHasError(true, false);
 
         let headers = {
             'Content-type': 'application/json',
@@ -90,34 +99,28 @@ export class WeatherResultsService {
 
         const getWeatherDataResponse = await response.json()
 
-        const stateUpdates = {
-            isLoading: false,
-        }
-
         if (
             getWeatherDataResponse.statusCode >= 400 ||
             getWeatherDataResponse.success === false
         ) {
             console.error('Failed to get weather data')
-            // this.setState({
-            //     ...stateUpdates,
-            //     hasError: true,
-            // })
-            return null;
+            setIsLoadingHasError(false, true);
+            return;
         }
 
         const ksnwindResults = getWeatherDataResponse.payload.filter((integration) => integration?.integrator === IntegratorEnum.KSNWIND)
 
         if (isNil(ksnwindResults)) {
             console.error('Failed to get windguru weather data')
-            // this.setState({
-            //     ...stateUpdates,
-            //     hasError: true,
-            // })
-            return null;
+            setIsLoadingHasError(false, true);
+            return;
         }
 
-        return ksnwindResults[0].results as KsnWindLatestResults;
+        const ksnwindLatestResult = ksnwindResults[0];
+
+        setResults(ksnwindLatestResult.results);
+
+        setIsLoadingHasError(false, false);
     }
 
 
