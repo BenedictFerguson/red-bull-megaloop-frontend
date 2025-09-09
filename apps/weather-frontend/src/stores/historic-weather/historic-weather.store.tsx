@@ -1,6 +1,6 @@
-import {create, type StateCreator} from 'zustand';
-import {devtools} from 'zustand/middleware';
-import {HistoricWeatherState} from "@stores/historic-weather/historic-weather.state.ts";
+import { create, type StateCreator } from 'zustand';
+import { devtools } from 'zustand/middleware';
+import { HistoricWeatherState } from '@stores/historic-weather/historic-weather.state';
 
 /**
  * The Historic Weather Store middleware

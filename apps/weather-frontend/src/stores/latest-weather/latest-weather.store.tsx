@@ -1,13 +1,6 @@
-import {create, type StateCreator} from 'zustand';
-import {devtools} from 'zustand/middleware';
-import {HistoricWeatherState} from "@stores/historic-weather/historic-weather.state.ts";
-import {
-    GustSpeed,
-    LatestWeatherState,
-    Results,
-    Temperature, WindDirection,
-    WindSpeed
-} from "@stores/latest-weather/latest-weather.state.ts";
+import { create, type StateCreator } from 'zustand';
+import { devtools } from 'zustand/middleware';
+import { LatestWeatherState, Results } from '@stores/latest-weather/latest-weather.state';
 
 /**
  * The Historic Weather Store middleware
@@ -15,9 +8,9 @@ import {
  */
 const storeMiddleware = (state: StateCreator<LatestWeatherState, [], []>) =>
     devtools(state, {
-        store: 'megaloop-historic-weather-store',
+        store: 'megaloop-latest-weather-store',
         enabled: false,
-        name: 'megaloop-historic-weather-store',
+        name: 'megaloop-latest-weather-store',
     });
 
 export const useLatestWeatherStore = create<LatestWeatherState>()(
@@ -29,7 +22,6 @@ export const useLatestWeatherStore = create<LatestWeatherState>()(
             min: 0,
             current: 0,
         },
-        // getCurrentGustSpeed: (): number => get().gustSpeed.current,
 
         windChill: '',
         windSpeed: {

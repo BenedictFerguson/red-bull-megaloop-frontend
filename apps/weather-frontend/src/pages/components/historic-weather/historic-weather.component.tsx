@@ -4,21 +4,19 @@ import {
     ComposedChart,
     Line,
     Area,
-    Bar,
     XAxis,
     YAxis,
     CartesianGrid,
     Tooltip,
     Legend,
-    Scatter,
     ResponsiveContainer,
 } from 'recharts';
-import {useAppStore} from "@stores/app/app.store.tsx";
-import {AppState} from "@stores/app/app.state.ts";
-import {WeatherResultsService} from "@services/weather-results.service.ts";
-import isEmpty from "lodash/isEmpty";
-import {useHistoricWeatherStore} from "@stores/historic-weather/historic-weather.store.tsx";
-import {HistoricWeatherState} from "@stores/historic-weather/historic-weather.state.ts";
+import { useAppStore} from '@stores/app/app.store';
+import { AppState} from '@stores/app/app.state';
+import { WeatherResultsService } from '@services/weather-results.service';
+import isEmpty from 'lodash/isEmpty';
+import { useHistoricWeatherStore } from '@stores/historic-weather/historic-weather.store';
+import { HistoricWeatherState } from '@stores/historic-weather/historic-weather.state';
 
 const HistoricWeatherComponent = () => {
     const apiUrl = useAppStore((state: AppState) => state.apiUrl);
@@ -26,7 +24,7 @@ const HistoricWeatherComponent = () => {
     const setData = useHistoricWeatherStore((state: HistoricWeatherState) => state.setData);
     const historicData = useHistoricWeatherStore((state: HistoricWeatherState) => state.data);
 
-    const data = useMemo(() => historicData);
+    const data = useMemo(() => historicData, [historicData]);
     useEffect(() => {
         WeatherResultsService.getInstance().historicKsnWindResults().then((value) => {
             if (isEmpty(value)) {
@@ -59,8 +57,8 @@ const HistoricWeatherComponent = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Area type="monotone" dataKey="windSpeed" fill="#8884d8" stroke="#8884d8" />
-                    <Line type="monotone" dataKey="gustSpeed" stroke="#ff7300" />
+                    <Area type="monotone" dataKey="gustSpeed" fill="#8884d8" stroke="#8884d8" />
+                    <Line type="monotone" dataKey="windSpeed" stroke="#ff7300" />
                 </ComposedChart>
             </ResponsiveContainer>
         </div>

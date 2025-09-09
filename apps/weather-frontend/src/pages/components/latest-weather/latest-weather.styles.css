@@ -1,3 +1,25 @@
 .latest-weather-container {
-    @apply border-2 border-gray-200 rounded-lg shadow-md bg-neutral-600;
+    @apply bg-[var(--cosmos-color-surface-glass-light-5,rgba(255,255,255,0.05))];
+    @apply p-[var(--cosmos-spacing-xx-loose,40px)] rounded-[var(--cosmos-radius-large,8px)];
+    @apply w-full flex flex-col items-center gap-[var(--cosmos-spacing-tight,12px)];
+
+
+    .wind-direction-container {
+        @apply w-full text-center;
+    }
+
+    .wind-speed-status-container {
+        @apply w-full text-left;
+
+        .wind-speed-status-bar {}
+    }
+
+    .separator {
+        @apply h-0 flex-none self-stretch flex-grow-0;
+        @apply border-[1px] border-solid border-[var(--cosmos-color-surface-glass-light-10,rgba(255,255,255,0.1))];
+    }
+
+    .wind-data-row {
+        @apply w-full grid grid-cols-2;
+    }
 }

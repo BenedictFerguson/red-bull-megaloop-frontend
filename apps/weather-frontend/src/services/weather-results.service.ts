@@ -2,6 +2,7 @@ import {useAppStore} from "@stores/app/app.store.tsx";
 import isEmpty from "lodash/isEmpty";
 import {IntegratorEnum} from "@constants/integrator.enum.ts";
 import isNil from "lodash/isNil";
+import {KsnWindLatestResults, KsnwindLatestResultsResponse} from "@shared/models/latest-results-reponse.model.ts";
 
 export class WeatherResultsService {
     private static instance: WeatherResultsService;
@@ -16,10 +17,10 @@ export class WeatherResultsService {
     public async historicKsnWindResults(): Promise<any[]> {
         const { apiUrl, tenantCredentials } = useAppStore.getState(); // Access store outside React components
         const { tenantClientId, tenantSecret } = tenantCredentials;
-        console.warn({tenantCredentials})
+
         if (isEmpty(tenantClientId) || isEmpty(tenantSecret)) {
             console.error('Cannot request data with missing tenant credentials.');
-            return;
+            return [];
         }
         // this.setState({
         //     hasError: false,
@@ -55,21 +56,19 @@ export class WeatherResultsService {
             //     ...stateUpdates,
             //     hasError: true,
             // })
-            return
+            return []
         }
         return getWeatherDataResponse
-
-        console.warn(getWeatherDataResponse)
         // TODO: Process data
     }
 
-    public async getLatestKsnWindWeatherData() {
+    public async getLatestKsnWindWeatherData(): Promise<KsnWindLatestResults | null> {
         const { apiUrl, tenantCredentials } = useAppStore.getState(); // Access store outside React components
         const { tenantClientId, tenantSecret } = tenantCredentials;
 
         if (isEmpty(tenantClientId) || isEmpty(tenantSecret)) {
             console.error('Cannot request data with missing tenant credentials.');
-            return;
+            return null;
         }
         // this.setState({
         //     hasError: false,
@@ -104,7 +103,7 @@ export class WeatherResultsService {
             //     ...stateUpdates,
             //     hasError: true,
             // })
-            return
+            return null;
         }
 
         const ksnwindResults = getWeatherDataResponse.payload.filter((integration) => integration?.integrator === IntegratorEnum.KSNWIND)
@@ -115,10 +114,10 @@ export class WeatherResultsService {
             //     ...stateUpdates,
             //     hasError: true,
             // })
-            return
+            return null;
         }
-console.warn(ksnwindResults)
 
+        return ksnwindResults[0].results as KsnWindLatestResults;
     }
 
 
