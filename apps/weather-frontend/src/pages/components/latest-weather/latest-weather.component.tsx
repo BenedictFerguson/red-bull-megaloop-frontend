@@ -6,12 +6,9 @@ import { AppState } from '@stores/app/app.state';
 import { CosmosIconImage, CosmosSpinner, CosmosText } from '@cosmos/web-scoped/react';
 import { useLatestWeatherStore } from '@stores/latest-weather/latest-weather.store';
 import { LatestWeatherState } from '@stores/latest-weather/latest-weather.state';
-
-function convertWindDirectionInDegreesToCompassValues(angle: number) {
-    const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-    const index = Math.round(((angle %= 360) < 0 ? angle + 360 : angle) / 45) % 8;
-    return directions[index];
-}
+import {
+    convertWindDirectionInDegreesToCompassValues
+} from '@shared/helpers/convert-wind-direction-in-degrees-to-compass-values.helper';
 
 const LatestWeatherComponent: React.FC = () => {
     const apiUrl = useAppStore((state: AppState) => state.apiUrl);
