@@ -1,0 +1,6 @@
+.live-scoring-page-container {
+    @pply w-full;
+    .live-scoring-page-content {
+        @appy w-full;
+    }
+}
