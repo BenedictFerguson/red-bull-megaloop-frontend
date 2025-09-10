@@ -22,4 +22,57 @@
     .wind-data-row {
         @apply w-full grid grid-cols-2;
     }
+
+    .compass-container {
+        @apply justify-items-center;
+    }
+    .indicator-icon {
+        @apply absolute;
+        color: #FFCB37;
+    }
+
+    .top-icon {
+        top: 0px;
+    }
+    .bottom-icon {
+        bottom: 0px;
+    }
+    .wind-speed-indicator-container {
+        @apply absolute;
+
+    }
+
+}
+
+.sizing-test {
+    position: relative;
+    background-color: black;
+    .bottom-icon {
+        height: 100%;
+        bottom: 0px;
+        color: #FFCB37;
+    }
+}
+
+.windspeed-bar {
+    @apply h-[15px] w-full relative rounded-[var(--cosmos-radius-large,8px)];
+    /* Rectangle 48 */
+
+    /*position: absolute;*/
+    /*width: 352px;*/
+    /*height: 10px;*/
+    /*left: 0px;*/
+    /*top: 3px;*/
+
+    /*background: linear-gradient(270deg, #FFFFFF 0%, #FFFFFF 7%, #67F7F1 13%, #00FF00 19%, #FFF000 27%, #FF322C 35%, #FF0A05 45%, #FF00FF 54%, #9632FF 64%, #3C3CFF 86%, #0000FF 100%);*/
+    /*border-radius: 8px 0px 0px 8px;*/
+    /*transform: rotate(180deg);*/
+
+    /*!* Inside auto layout *!*/
+    /*flex: none;*/
+    /*order: 0;*/
+    /*flex-grow: 0;*/
+    /*z-index: 0;*/
+
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 7%, rgba(103,247,241,1) 13%, rgba(0,255,0,1) 19%, rgba(255,240,0,1) 27%, rgba(255,50,44,1) 35%, rgba(255,10,200,1) 45%, rgba(255,0,255,1) 54%, rgba(150,50,255,1) 64%, rgba(60,60,255,1) 86%, rgba(0,0,255,1) 100%)
 }
