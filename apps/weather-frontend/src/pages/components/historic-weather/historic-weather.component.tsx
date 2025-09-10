@@ -50,7 +50,8 @@ const HistoricWeatherComponent = () => {
                     <CartesianGrid stroke="rgba(243,243,243,0.15)" />
                     <XAxis dataKey="date" tickFormatter={formatXAxis} tick={{fontSize: 12}} type="number"
                            scale="time"
-                           domain={['dataMin', 'dataMax']} />
+                           domain={['dataMin', 'dataMax']}
+                    />
                     <YAxis label={{value: 'Knots', angle: -90, position: 'insideLeft', fontSize: 12}} tick={{fontSize: 12}} />
                     <Tooltip content={CustomWeatherTooltipComponent}/>
                     <Area type="monotone" dataKey="gustSpeed" fill="rgba(217,217,217,0.16)" stroke="rgba(217,217,217,0.16)" unit=" Knots" name="Gust Speed"/>
