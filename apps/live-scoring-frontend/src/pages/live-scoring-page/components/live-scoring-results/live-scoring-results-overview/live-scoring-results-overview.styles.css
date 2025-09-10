@@ -1,0 +1,5 @@
+/* Tailwind-based styles for live-scoring-results-overview */
+
+.live-scoring-result-overview {
+  @apply w-full flex flex-row gap-10 overflow-x-auto pb-6 sm:gap-14;
+}

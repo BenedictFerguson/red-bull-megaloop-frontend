@@ -1,0 +1,9 @@
+/* Tailwind-based styles for heat-athlete-overview */
+
+.heat-athlete-overview-container {
+  @apply flex flex-row justify-between items-center p-2 gap-[10px];
+}
+
+.heat-athlete-overview-container:not(:first-child) {
+  border-top: 1px #EFEFEF solid;
+}

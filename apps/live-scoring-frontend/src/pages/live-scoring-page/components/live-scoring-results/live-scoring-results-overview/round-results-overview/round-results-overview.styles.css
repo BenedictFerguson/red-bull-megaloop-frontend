@@ -1,0 +1,9 @@
+/* Tailwind-based styles for round-results-overview */
+
+.round-results-overview-container {
+  @apply flex flex-col shrink-0 w-[300px];
+}
+
+.round-results-heat-container {
+  @apply w-full flex flex-col gap-5 grow justify-center;
+}

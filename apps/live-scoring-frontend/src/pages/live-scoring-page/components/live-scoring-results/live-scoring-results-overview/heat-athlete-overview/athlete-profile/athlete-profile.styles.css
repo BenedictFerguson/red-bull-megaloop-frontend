@@ -1,0 +1,9 @@
+/* Tailwind-based styles for athlete-profile */
+
+.athlete-profile-container {
+  @apply flex flex-row gap-[10px];
+}
+
+.athlete-profile-avatar {
+  @apply rounded-full outline outline-1 outline-[#EFEFEF];
+}
