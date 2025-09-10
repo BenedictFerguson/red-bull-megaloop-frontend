@@ -78,18 +78,22 @@ const LatestWeatherComponent: React.FC = () => {
             </div>
             <div className="wind-speed-status-container">
                 <CosmosText appearance="light" kind="subtle" weight="regular" size="x-small">Wind Speed Status</CosmosText>
-                <div className="wind-speed-status-bar windspeed-bar">
-                    <svg width="100%" height="15" viewBox="0 0 100% 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="11" y="0" width="2" height="15" fill="#F3F3F3" fill-opacity="0.15"/>
-                        <rect x="81" y="0" width="2" height="15" fill="#F3F3F3" fill-opacity="0.15"/>
-                        <rect x="151" y="0" width="2" height="15" fill="#F3F3F3" fill-opacity="0.15"/>
-                        <rect x="291" y="0" width="2" height="15" fill="#F3F3F3" fill-opacity="0.15"/>
-                        <rect x="361" y="0" width="2" height="15" fill="#F3F3F3" fill-opacity="0.15"/>
-                        <g transform={`translate(${(windSpeed/70)*100} 0)`}>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.79 17.21L5.50999 22.49C5.42595 22.5757 5.4011 22.7033 5.4468 22.8142C5.4925 22.9252 5.59997 22.9983 5.71999 23H16.28C16.4 22.9983 16.5075 22.9252 16.5532 22.8142C16.5989 22.7033 16.574 22.5757 16.49 22.49L11.21 17.21C11.1553 17.1525 11.0794 17.12 11 17.12C10.9206 17.12 10.8447 17.1525 10.79 17.21Z" fill="#FFCB37" transform="matrix(1, 0, 0, 1, 0, -8.000000000000002)"/>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.79 13.79L5.50999 8.51C5.42595 8.42429 5.4011 8.29674 5.4468 8.18575C5.4925 8.07476 5.59997 8.00169 5.71999 8H16.28C16.4 8.00169 16.5075 8.07476 16.5532 8.18575C16.5989 8.29674 16.574 8.42429 16.49 8.51L11.21 13.79C11.1553 13.8475 11.0794 13.88 11 13.88C10.9206 13.88 10.8447 13.8475 10.79 13.79Z" fill="#FFCB37" transform="matrix(1, 0, 0, 1, 0, -8.000000000000002)"/>
-                        </g>
-                    </svg>
+                <div className="windspeed-bar">
+                    <div className="windspeed-graph">
+                        <svg width="100%" height="15" viewBox="0 0 100% 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="11" y="0" width="2" height="15" fill="#F3F3F3" fill-opacity="0.15"/>
+                            <rect x="81" y="0" width="2" height="15" fill="#F3F3F3" fill-opacity="0.15"/>
+                            <rect x="151" y="0" width="2" height="15" fill="#F3F3F3" fill-opacity="0.15"/>
+                            <rect x="291" y="0" width="2" height="15" fill="#F3F3F3" fill-opacity="0.15"/>
+                            <rect x="361" y="0" width="2" height="15" fill="#F3F3F3" fill-opacity="0.15"/>
+                            <g transform={`translate(${(windSpeed/70)*100} 0)`}>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.79 17.21L5.50999 22.49C5.42595 22.5757 5.4011 22.7033 5.4468 22.8142C5.4925 22.9252 5.59997 22.9983 5.71999 23H16.28C16.4 22.9983 16.5075 22.9252 16.5532 22.8142C16.5989 22.7033 16.574 22.5757 16.49 22.49L11.21 17.21C11.1553 17.1525 11.0794 17.12 11 17.12C10.9206 17.12 10.8447 17.1525 10.79 17.21Z" fill="#FFCB37" transform="matrix(1, 0, 0, 1, 0, -8.000000000000002)"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.79 13.79L5.50999 8.51C5.42595 8.42429 5.4011 8.29674 5.4468 8.18575C5.4925 8.07476 5.59997 8.00169 5.71999 8H16.28C16.4 8.00169 16.5075 8.07476 16.5532 8.18575C16.5989 8.29674 16.574 8.42429 16.49 8.51L11.21 13.79C11.1553 13.8475 11.0794 13.88 11 13.88C10.9206 13.88 10.8447 13.8475 10.79 13.79Z" fill="#FFCB37" transform="matrix(1, 0, 0, 1, 0, -8.000000000000002)"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div className="wind-speed-status-bar" >
+                    </div>
                 </div>
             </div>
             <div className="separator"></div>
