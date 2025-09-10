@@ -18,7 +18,7 @@
         "react-device-detect": "^2.2.3",
         "react-dom": "^19.0.0",
         "react-router": "^7.1.5",
-        "tone": "^15.0.4",
+        "socket.io-client": "^4.8.1",
         "zustand": "^5.0.3"
     },
     "devDependencies": {
