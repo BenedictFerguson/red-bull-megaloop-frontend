@@ -1,11 +1,8 @@
 .app {
   @apply w-full flex flex-col;
 
-  --state-of-play-container-background: #37302a;
-  background: var(
-    --panel__background,
-    var(--state-of-play-container-background, #f8f8f8)
-  );
+  --panel__background: #1d353e;
+  background: var(--panel__background, var(--cosmos-color-surface-solid-light));
 
   .app-container {
     @apply h-full ml-4 flex flex-col justify-center w-app-container-small-width;
