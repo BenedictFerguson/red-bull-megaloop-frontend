@@ -1,23 +1,17 @@
 import { produce } from 'immer';
 import { create, type StateCreator } from 'zustand';
-import { createJSONStorage, devtools } from 'zustand/middleware';
+import { devtools } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 import { ComponentState } from '@enums/component-state.enum.ts';
-import type {AppState} from "@stores/app/app.state.ts";
+import type { AppState } from '@stores/app/app.state.ts';
+import type { SocketConnectionDetails } from '../../models/socket-connection-details.model.ts';
 
 const storeMiddleware = (state: StateCreator<AppState, [], []>) =>
-    devtools(
-        immer(
-            state, {
-                name: 'stateOfPlayAppStore',
-                storage: createJSONStorage(() => sessionStorage),
-            }
-        ),
-    );
+    devtools(immer(state));
 
 export const useAppStore = create<AppState>()(
     storeMiddleware((set, get) => ({
-        apiUrl: 'http://localhost:8080/api/v1',
+        apiUrl: null,
         setApiUrl: (newApiUrl: string) =>
             set(
                 produce<AppState>((state) => {
@@ -25,7 +19,7 @@ export const useAppStore = create<AppState>()(
                 }),
             ),
 
-        assetUrl: 'http://localhost:8080/public',
+        assetUrl: null,
         setAssetUrl: (newAssetUrl: string) =>
             set(
                 produce<AppState>((state) => {
@@ -41,26 +35,30 @@ export const useAppStore = create<AppState>()(
                 }),
             ),
 
-        componentState: ComponentState.LOADING,
-        setComponentState: (componentState: ComponentState) =>
+        socketConnectionDetails: null,
+        setSocketConnectionDetails: (
+            newSocketConnectionDetails: SocketConnectionDetails,
+        ) =>
             set(
                 produce<AppState>((state) => {
-                    state.componentState = componentState;
-                    state.isLoading =
-                        componentState === ComponentState.LOADING;
-                    state.isEventReady =
-                        componentState === ComponentState.SUCCESS ||
-                        componentState === ComponentState.READY;
-                    state.hasError =
-                        componentState === ComponentState.ERROR;
+                    state.socketConnectionDetails = newSocketConnectionDetails;
+                }),
+            ),
+
+        componentState: ComponentState.LOADING,
+        setComponentState: (newComponentState: ComponentState) =>
+            set(
+                produce<AppState>((state) => {
+                    state.componentState = newComponentState;
                 }),
             ),
 
         resetAppState: () =>
             set({
-                apiUrl: 'http://localhost:8080/api/v1',
-                assetUrl: 'http://localhost:8080/public',
+                apiUrl: null,
+                assetUrl: null,
                 assetId: null,
+                socketConnectionDetails: null,
                 componentState: ComponentState.LOADING,
             }),
     })),
