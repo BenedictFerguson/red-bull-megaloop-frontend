@@ -1,0 +1,3 @@
+.live-scoring-pre-event-container {
+  @apply w-full h-[50vh] flex items-center justify-center flex-wrap;
+}

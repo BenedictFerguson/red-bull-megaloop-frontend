@@ -1,0 +1,7 @@
+.live-scoring-error-container {
+  @apply w-full h-[50vh] flex flex-col items-center justify-center flex-wrap;
+
+  .live-scoring-error-icon {
+    @apply w-20 h-20 text-[var(--cosmos-color-text-light)];
+  }
+}
