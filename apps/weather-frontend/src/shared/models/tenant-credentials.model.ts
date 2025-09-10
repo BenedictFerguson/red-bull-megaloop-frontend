@@ -1,4 +1,4 @@
-export class TenantCredentials {
+export interface TenantCredentials {
     tenantClientId: string;
     tenantSecret: string;
 }
