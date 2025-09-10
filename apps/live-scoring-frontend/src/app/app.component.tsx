@@ -7,8 +7,8 @@ import isNil from 'lodash/isNil';
 import { useEffect } from 'react';
 import { RouterProvider } from 'react-router';
 import type { CustomScriptLocalisations } from '@types';
-import LocalisationsContext from '../contexts/localisations.context';
 import GridHelper from '@app/components/grid-helper/grid-helper.component';
+import LocalisationsContext from '@contexts/localisations.context';
 
 export type AppProps = {
     topSpacing: string;
@@ -16,6 +16,9 @@ export type AppProps = {
     apiUrl: string;
     assetUrl: string;
     assetId: string;
+    socketUrl: string;
+    socketPath: string;
+    socketEventName: string;
     localisations: CustomScriptLocalisations;
     showGridLines?: boolean;
 };
@@ -27,6 +30,9 @@ const App: React.FC<AppProps> = ({
     apiUrl,
     assetUrl,
     assetId,
+    socketUrl,
+    socketPath,
+    socketEventName,
     localisations,
     showGridLines = false,
 }: AppProps) => {
@@ -42,33 +48,43 @@ const App: React.FC<AppProps> = ({
     const setApiUrl = useAppStore((state) => state.setApiUrl);
     const setAssetUrl = useAppStore((state) => state.setAssetUrl);
     const setAssetId = useAppStore((state) => state.setAssetId);
+    const setSocketConnectionDetails = useAppStore(
+        (state) => state.setSocketConnectionDetails,
+    );
 
     useEffect(() => {
         if (!isNil(apiUrl) && !isEmpty(apiUrl)) {
             setApiUrl(apiUrl);
         }
-    }, [
-        apiUrl,
-        setApiUrl,
-    ]);
+    }, [apiUrl, setApiUrl]);
 
     useEffect(() => {
         if (!isEmpty(assetUrl)) {
             setAssetUrl(assetUrl);
         }
-    }, [
-        assetUrl,
-        setAssetUrl,
-    ]);
+    }, [assetUrl, setAssetUrl]);
 
     useEffect(() => {
         if (!isEmpty(assetId)) {
             setAssetId(assetId);
         }
-    }, [
-        assetId,
-        setAssetId,
-    ]);
+    }, [assetId, setAssetId]);
+
+    useEffect(() => {
+        if (
+            !isEmpty(assetId) &&
+            !isNil(socketUrl) &&
+            !isNil(socketPath) &&
+            !isNil(socketEventName)
+        ) {
+            const socketDetails = {
+                socketUrl,
+                socketPath,
+                socketEventName,
+            };
+            setSocketConnectionDetails(socketDetails);
+        }
+    }, [socketUrl, socketPath, socketEventName, setSocketConnectionDetails]);
 
     return (
         <div className={classes}>

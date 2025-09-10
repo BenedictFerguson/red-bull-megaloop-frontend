@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/main.css';
 import AppComponent, { type AppProps } from '@app/app.component';
-import type { CustomScriptEnvironment, CustomScriptLocalisations, } from '@types';
+import type {
+    CustomScriptEnvironment,
+    CustomScriptLocalisations,
+} from '@types';
 
 const root = document.getElementById('root') as HTMLElement;
 
@@ -34,21 +37,31 @@ const dev: CustomScriptEnvironment = {
     apiUrl: 'http://localhost:8080/api/v1',
     assetUrl: 'http://localhost:8080/public',
     assetId: 'rrn:content:event-profiles:416c2baf-7535-4e8b-9460-e854b1950b86',
+    socketUrl: 'http://localhost:8080/',
+    socketPath: '/socket.io',
+    socketEventName: '',
 };
 
 const staging: CustomScriptEnvironment = {
     apiUrl: 'https://p-p.redbull.com/rb-red-bullf-diving-6e-77-stg/api/v1',
     assetUrl: 'https://p-p.redbull.com/rb-red-bullf-diving-6e-77-stg/public',
     assetId: 'rrn:content:event-profiles:8061d4c3-4ef2-4284-8915-cc15e09b35c6',
+    socketUrl: 'https://p-p.redbull.com/',
+    socketPath: '/rb-red-bullf-diving-6e-77-stg/socket.io',
+    socketEventName: '',
 };
 
 const production: CustomScriptEnvironment = {
     apiUrl: 'https://p-p.redbull.com/rb-red-bullf-diving-6e-77-prod-34bf88e41923/api/v1',
-    assetUrl: 'https://p-p.redbull.com/rb-red-bullf-diving-6e-77-prod-34bf88e41923/public',
+    assetUrl:
+        'https://p-p.redbull.com/rb-red-bullf-diving-6e-77-prod-34bf88e41923/public',
     assetId: 'rrn:content:event-profiles:416c2baf-7535-4e8b-9460-e854b1950b86',
+    socketUrl: 'https://p-p.redbull.com/',
+    socketPath: '/rb-red-bullf-diving-6e-77-prod-34bf88e41923//socket.io',
+    socketEventName: '',
 };
 
-const env: CustomScriptEnvironment = production;
+const env: CustomScriptEnvironment = dev;
 
 const appProps: AppProps = {
     ...env,
