@@ -4,7 +4,7 @@ import './live-scoring-header.styles.css';
 import type { CustomScriptLocalisations } from '@types';
 import { useLocalisationsContext } from '@hooks/use-localisations-context.hook';
 
-const LiveScoringHeaderComponent: React.FC = () => {
+const LiveScoringHeader: React.FC = () => {
     const localisations: CustomScriptLocalisations = useLocalisationsContext();
 
     return (
@@ -20,4 +20,4 @@ const LiveScoringHeaderComponent: React.FC = () => {
     );
 };
 
-export default LiveScoringHeaderComponent;
+export default LiveScoringHeader;
