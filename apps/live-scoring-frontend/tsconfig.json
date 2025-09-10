@@ -15,10 +15,10 @@
         "paths": {
             "@app/*": ["src/app/*"],
             "@constants/*": ["src/constants/*"],
+            "@contexts/*": ["src/contexts/*"],
             "@enums/*": ["src/enums/*"],
             "@helpers/*": ["src/helpers/*"],
             "@hooks/*": ["src/hooks/*"],
-            "@state-of-play/models": ["src/models/index"],
             "@pages/*": ["src/pages/*"],
             "@services/*": ["src/services/*"],
             "@stores/*": ["src/stores/*"],
