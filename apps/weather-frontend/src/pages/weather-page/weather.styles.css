@@ -1,3 +1,5 @@
 .weather-container {
-  @apply w-full h-full grid grid-cols-[1fr_2fr] max-h-screen gap-[var(--cosmos-spacing-normal,16px)];
+  @apply w-full h-full grid sm:grid-cols-[1fr_2fr] max-h-screen gap-[var(--cosmos-spacing-normal,16px)];
+
+
 }
