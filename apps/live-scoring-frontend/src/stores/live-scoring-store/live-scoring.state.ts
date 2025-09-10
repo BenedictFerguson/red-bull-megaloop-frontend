@@ -1,13 +1,16 @@
-import type { ComponentState } from '@enums/component-state.enum.ts';
-
 export interface LiveScoringStateSelectors {}
 
-export interface LiveScoringActions {
-    setEvents: (newEvents: any) => void;
-}
+export interface LiveScoringActions {}
 
 export interface LiveScoringState
     extends LiveScoringActions,
         LiveScoringStateSelectors {
-    events: any;
+    eventSeries: any | null;
+    currentClass: string | null;
+    currentView: string | null;
+    currentRoundId: string | null;
+    currentHeatId: string | null;
+    openEvent: any | null;
+    womenEvent: any | null;
+    eventDataNamesInitialised: string[];
 }

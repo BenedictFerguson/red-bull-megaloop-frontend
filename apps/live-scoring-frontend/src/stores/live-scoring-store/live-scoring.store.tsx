@@ -1,20 +1,22 @@
-import { produce } from 'immer';
 import { create, type StateCreator } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 import type { LiveScoringState } from '@stores/live-scoring-store/live-scoring.state.ts';
+import { EVENT_CLASSES } from '@constants/event-classes.constants.ts';
+import { EVENT_VIEWS } from '@constants/event-views.constant.ts';
 
 const storeMiddleware = (state: StateCreator<LiveScoringState, [], []>) =>
     devtools(immer(state));
 
 export const useLiveScoringStore = create<LiveScoringState>()(
     storeMiddleware((set, get) => ({
-        events: 'http://localhost:8080/api/v1',
-        setEvents: (newEvents: string) =>
-            set(
-                produce<LiveScoringState>((state) => {
-                    state.events = newEvents;
-                }),
-            ),
+        eventSeries: null,
+        openEvent: null,
+        womenEvent: null,
+        eventDataNamesInitialised: [],
+        currentClass: EVENT_CLASSES.Open,
+        currentView: EVENT_VIEWS.Overview,
+        currentHeatId: null,
+        currentRoundId: null,
     })),
 );
