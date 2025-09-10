@@ -1,7 +1,7 @@
-import {useAppStore} from "@stores/app/app.store.tsx";
-import isEmpty from "lodash/isEmpty";
-import {IntegratorEnum} from "@constants/integrator.enum.ts";
-import isNil from "lodash/isNil";
+import { useAppStore } from '@stores/app/app.store';
+import isEmpty from 'lodash/isEmpty';
+import { IntegratorEnum } from '@constants/integrator.enum';
+import isNil from 'lodash/isNil';
 
 export class WeatherResultsService {
     private static instance: WeatherResultsService;
@@ -104,7 +104,7 @@ export class WeatherResultsService {
             return
         }
 
-        const ksnwindResults = getWeatherDataResponse.payload.filter((integration) => integration?.integrator === IntegratorEnum.KSNWIND)
+        const ksnwindResults = getWeatherDataResponse.payload.filter((integration: any) => integration?.integrator === IntegratorEnum.KSNWIND)
 
         if (isNil(ksnwindResults)) {
             console.error('Failed to get windguru weather data')

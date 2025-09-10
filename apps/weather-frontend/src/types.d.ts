@@ -3,6 +3,7 @@
  *
  * @interface
  */
+import {TenantCredentials} from "@shared/models/tenant-credentials.model.ts";
 
 declare type CustomScript = {
     /**
@@ -155,12 +156,10 @@ declare type CustomScriptLocalisations = {
 };
 
 declare type CustomScriptEnvironment = {
-    socketUrl: string;
-    socketPath: string;
-    socketEventName: string;
     apiUrl: string;
     assetUrl: string;
     assetId: string;
+    tenantCredentials: TenantCredentials;
 };
 
 // Declare the global window property for better type safety
