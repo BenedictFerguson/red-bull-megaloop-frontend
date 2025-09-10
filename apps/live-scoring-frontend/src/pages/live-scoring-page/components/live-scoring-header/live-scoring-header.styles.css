@@ -1,0 +1,15 @@
+.live-scoring-header-container {
+  @apply w-full flex items-center flex-wrap border-l-8 border-solid border-l-accent-yellow mb-3;
+
+  @media only screen and (min-width: 1350px) {
+    @apply mb-4;
+  }
+
+  .live-scoring-header-title {
+    @apply pl-4;
+
+    @media only screen and (min-width: 1350px) {
+      @apply pl-5;
+    }
+  }
+}

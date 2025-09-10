@@ -17,6 +17,7 @@ export default defineConfig({
         alias: {
             '@app': path.resolve(__dirname, './src/app'),
             '@constants': path.resolve(__dirname, './src/constants'),
+            '@contexts': path.resolve(__dirname, './src/contexts'),
             '@enums': path.resolve(__dirname, './src/enums'),
             '@helpers': path.resolve(__dirname, './src/helpers'),
             '@hooks': path.resolve(__dirname, './src/hooks'),

@@ -3,6 +3,9 @@ module.exports = {
     content: ['./src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
+            colors: {
+                'accent-yellow': '#FFCB37',
+            },
             width: {
                 'app-container-small-width': 'calc(99.99% - 32px)',
                 'app-container-medium-width': 'calc(99.99% - 80px)',

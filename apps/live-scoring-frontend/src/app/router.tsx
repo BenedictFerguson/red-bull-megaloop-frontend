@@ -1,6 +1,6 @@
 import { createMemoryRouter, type RouteObject } from 'react-router';
 import { FRONTEND_ROUTES } from '@constants/frontend-routes';
-import LiveScoringPage from "@pages/weather-page/live-scoring.page.tsx";
+import LiveScoringPage from '@pages/live-scoring-page/live-scoring.page.tsx';
 
 const routes: RouteObject[] = [
     {
