@@ -61,7 +61,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipContentProps<any, any>
                     weight="regular"
                 >
                     {
-                        new Date(label).toLocaleString()
+                        new Date(label as number).toLocaleString()
                     }
                 </CosmosText>
                 { windDirectionElement }
@@ -99,7 +99,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipContentProps<any, any>
     return null;
 };
 
-const formatXAxis = (tickItem) => {
+const formatXAxis = (tickItem: any) => {
     const date = new Date(tickItem);
     return date.toLocaleDateString('en-US', { day: 'numeric',  month: 'short', hour: "numeric", minute:"numeric"});
 };
