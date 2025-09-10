@@ -1,0 +1,11 @@
+.live-scoring-live-icon-container {
+  @apply inline-flex justify-start items-start;
+
+  .live-scoring-live-icon-dot {
+    @apply w-[10px] h-[10px] rounded-full bg-notification-red;
+  }
+
+  .live-scoring-live-icon-pulse {
+    @apply w-[10px] h-[10px] rounded-full bg-notification-red animate-ping duration-2000;
+  }
+}
