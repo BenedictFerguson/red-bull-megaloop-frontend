@@ -1,5 +1,14 @@
 import './live-scoring-page.styles.css';
 import React, { useContext, useEffect, useState } from 'react';
+import LiveScoringLoading from './components/live-scoring-loading/live-scoring-loading.component';
+import LiveScoringHeader from '@pages/live-scoring-page/components/live-scoring-header/live-scoring-header.component.tsx';
+import { useAppStore } from '@stores/app/app.store.tsx';
+import type { AppState } from '@stores/app/app.state.ts';
+import { ComponentState } from '@enums/component-state.enum.ts';
+import LiveScoringError from '@pages/live-scoring-page/components/live-scoring-error/live-scoring-error.component.tsx';
+import LiveScoringPreEvent from '@pages/live-scoring-page/components/live-scoring-pre-event/live-scoring-pre-event.component.tsx';
+import LiveScoringResults from '@pages/live-scoring-page/components/live-scoring-results/live-scoring-results.component.tsx';
+
 // import socketIOClient from 'socket.io-client';
 // import { isEmpty, isNil } from 'lodash';
 // import { stringify } from 'querystring-es3';
@@ -13,15 +22,10 @@ import React, { useContext, useEffect, useState } from 'react';
 // import LiveScoringPreEvent from './components/live-scoring-pre-event/live-scoring-pre-event.component';
 // import { NotFoundError } from './errors/not-found-error';
 // import { ERROR_TYPE } from './constants/error-types.constant';
-import LiveScoringLoading from './components/live-scoring-loading/live-scoring-loading.component';
 // import LiveScoringError from './components/live-scoring-error/live-scoring-error.component';
 // import LiveScoringEvent from './components/live-scoring-event/live-scoring-event.component';
 // import LiveScoringResultsHeader from './components/live-scoring-results/live-scoring-results-header/live-scoring-results-header.component';
 // import { EVENT_CLASSES_TO_EVENT_DATA_NAME } from './constants/event-classes.constants';
-import LiveScoringHeaderComponent from '@pages/live-scoring-page/components/live-scoring-header/live-scoring-header.component.tsx';
-import { useAppStore } from '@stores/app/app.store.tsx';
-import type { AppState } from '@stores/app/app.state.ts';
-import { ComponentState } from '@enums/component-state.enum.ts';
 
 const LiveScoringPage = () => {
     const componentState = useAppStore(
@@ -135,23 +139,20 @@ const LiveScoringPage = () => {
     return (
         <div className="live-scoring-page-container">
             <div className="live-scoring-page-content">
-                <LiveScoringHeaderComponent />
+                <LiveScoringHeader />
                 {/*<LiveScoringResultsHeader isComponentSuccessful={componentState === COMPONENT_STATE.SUCCESS}/>*/}
                 {componentState === ComponentState.LOADING && (
                     <LiveScoringLoading />
                 )}
-                {/*{*/}
-                {/*    componentState === COMPONENT_STATE.ERROR ? <LiveScoringError /> : null*/}
-                {/*}*/}
-                {/*{*/}
-                {/*    componentState === COMPONENT_STATE.PRE_EVENT ? <LiveScoringPreEvent isEventReady={false} /> : null*/}
-                {/*}*/}
-                {/*{*/}
-                {/*    componentState === COMPONENT_STATE.READY ? <LiveScoringPreEvent isEventReady={true} /> : null*/}
-                {/*}*/}
-                {/*{*/}
-                {/*    componentState === COMPONENT_STATE.SUCCESS ? <LiveScoringEvent /> : null*/}
-                {/*}*/}
+                {componentState === ComponentState.ERROR && (
+                    <LiveScoringError />
+                )}
+                {componentState === ComponentState.PRE_EVENT && (
+                    <LiveScoringPreEvent />
+                )}
+                {componentState === ComponentState.SUCCESS && (
+                    <LiveScoringResults />
+                )}
             </div>
         </div>
     );
