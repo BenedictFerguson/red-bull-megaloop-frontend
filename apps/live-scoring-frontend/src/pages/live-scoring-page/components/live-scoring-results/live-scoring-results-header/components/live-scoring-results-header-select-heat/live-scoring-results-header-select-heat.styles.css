@@ -1,0 +1,14 @@
+/* Tailwind-based styles migrated from styled-components for select heat */
+
+.live-scoring-results-header-select-heat-container {
+  /* width: 100%; then fixed width on >=650px */
+  @apply w-full sm:w-[200px];
+
+  .heat-option-container {
+    @apply flex items-center gap-1;
+  }
+
+  .heat-option-indicator {
+    @apply pb-4;
+  }
+}

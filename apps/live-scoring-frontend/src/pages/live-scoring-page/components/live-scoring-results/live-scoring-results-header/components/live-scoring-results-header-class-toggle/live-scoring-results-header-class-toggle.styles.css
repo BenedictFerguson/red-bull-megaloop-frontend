@@ -1,0 +1,91 @@
+/* Tailwind-based styles migrated from styled-components for class toggle */
+
+.live-scoring-results-header-class-toggle-container {
+  /* display: flex; justify-content: flex-end; align-items: center; flex-direction: row; */
+  @apply flex justify-end items-center;
+}
+
+/* Handle special breakpoints that don't align with Tailwind defaults */
+@media only screen and (min-width: 1000px) and (max-width: 1200px) {
+  .live-scoring-results-header-class-toggle-container {
+    @apply flex-col;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .live-scoring-results-header-class-toggle-container {
+    @apply flex-row;
+  }
+}
+
+.live-scoring-results-header-class-toggle-button {
+  /* min-width: 224px; width: 100%; and max-width on >=650px */
+  @apply w-full min-w-[224px] sm:max-w-[264px];
+}
+
+/* Scoped styles for the toggle UI */
+.live-scoring-results-header-class-toggle-button .filter-toggle {
+  /* width: 100%; position: relative; overflow: hidden; text-overflow: clip; z-index: 1; border-radius: 20px; height: 40px; background-color */
+  @apply w-full relative overflow-hidden z-[1] rounded-[20px] h-10;
+  background-color: rgba(226, 227, 229, 0.6);
+}
+
+.live-scoring-results-header-class-toggle-button .filter-toggle:hover {
+  background-color: #e2e3e5;
+}
+
+.live-scoring-results-header-class-toggle-button .filter-toggle__slider {
+  /* absolute slider */
+  @apply absolute bg-white rounded-[18px];
+  width: calc(50% - 4px);
+  height: calc(40px - 8px);
+  margin: 4px 4px 0;
+  transition: left 1s cubic-bezier(0.35, 0, 0, 1), width .15s
+    cubic-bezier(0.35, 0, 0, 1), transform .15s cubic-bezier(0.35, 0, 0, 1);
+}
+
+.live-scoring-results-header-class-toggle-button
+  .filter-toggle--first-active
+  .filter-toggle__slider {
+  left: 0;
+}
+.live-scoring-results-header-class-toggle-button
+  .filter-toggle--second-active
+  .filter-toggle__slider {
+  left: calc(50% - 4px);
+}
+
+.live-scoring-results-header-class-toggle-button .filter-toggle__options {
+  /* display: flex; center; padding: 0; height: 100% */
+  @apply flex justify-center items-center p-0 h-full;
+}
+
+.live-scoring-results-header-class-toggle-button .filter-toggle__option {
+  /* flex item */
+  @apply flex overflow-hidden relative;
+  flex: 1 0 1px;
+}
+
+.live-scoring-results-header-class-toggle-button .filter-toggle__option-input {
+  position: absolute;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  opacity: 0;
+  z-index: -1;
+  outline: 0;
+  margin: 0;
+}
+
+.live-scoring-results-header-class-toggle-button
+  .filter-toggle__option:first-child
+  .filter-toggle__option-label {
+  margin-right: 0;
+}
+
+.live-scoring-results-header-class-toggle-button .filter-toggle__option-label {
+  /* text styles */
+  @apply cursor-pointer text-center w-full outline-0 whitespace-nowrap overflow-hidden box-border select-none;
+  color: #4d4e51;
+  text-overflow: ellipsis;
+  justify-content: center;
+}

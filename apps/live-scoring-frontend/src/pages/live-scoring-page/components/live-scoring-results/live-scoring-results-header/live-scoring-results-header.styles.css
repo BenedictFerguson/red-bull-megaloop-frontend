@@ -1,0 +1,33 @@
+/* Tailwind-based styles migrated from styled-components */
+
+.live-scoring-results-header-container {
+  /* width: 100%; margin-bottom: 32px; */
+  @apply w-full mb-8;
+}
+
+.live-scoring-result-bottom-header-container {
+  /* display: flex; background: white; padding: 12px; border-radius: 8px; box-shadow; gap: 8px; */
+  @apply flex bg-white p-3 rounded-lg shadow gap-2;
+}
+
+.live-scoring-result-bottom-header-right-container {
+  /* display: flex; flex-grow: 1; flex-wrap: wrap; gap: 8px; */
+  @apply flex flex-grow flex-wrap gap-2;
+}
+
+.live-scoring-result-bottom-header-left-container {
+  /* display: flex; */
+  @apply flex;
+}
+
+/* display: none; width: 100%;
+   @media only screen and (min-width: 650px) { display: flex; } */
+.live-scoring-result-desktop-section-container {
+  @apply hidden w-full sm:flex;
+}
+
+/* display: flex; flex-direction: column; gap: 8px; width: 100%;
+   @media only screen and (min-width: 650px) { display: none; } */
+.live-scoring-result-mobile-section-container {
+  @apply flex flex-col gap-2 w-full sm:hidden;
+}

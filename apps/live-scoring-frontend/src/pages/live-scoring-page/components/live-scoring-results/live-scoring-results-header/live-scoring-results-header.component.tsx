@@ -1,40 +1,29 @@
 import React from 'react';
-import {
-    LiveScoringResultBottomHeaderContainer,
-    LiveScoringResultBottomHeaderLeftContainer,
-    LiveScoringResultBottomHeaderRightContainer,
-    LiveScoringResultDesktopSectionContainer,
-    LiveScoringResultMobileSectionContainer,
-    LiveScoringResultsHeaderContainer,
-    LiveScoringResultsHeaderTimerContainer,
-    LiveScoringResultsHeaderTitle,
-    LiveScoringResultsTopHeaderContainer,
-    ResultsHeaderRightContainer,
-} from './live-scoring-results-header.sc';
-import ResultsHeaderToggleView from './components/results-header-toggle-view/results-header-toggle-view.component';
-import ResultsHeaderSelectHeat from './components/results-header-select-heat/results-header-select-heat.component';
-import LiveScoringClassToggle from './components/live-scoring-class-toggle/live-scoring-class-toggle.component';
+import './live-scoring-results-header.styles.css';
+import LiveScoringResultsHeaderClassToggle from '@pages/live-scoring-page/components/live-scoring-results/live-scoring-results-header/components/live-scoring-results-header-class-toggle/live-scoring-results-header-class-toggle.component.tsx';
+import LiveScoringResultsHeaderSelectHeat from '@pages/live-scoring-page/components/live-scoring-results/live-scoring-results-header/components/live-scoring-results-header-select-heat/live-scoring-results-header-select-heat.component.tsx';
+import LiveScoringResultsHeaderToggleView from '@pages/live-scoring-page/components/live-scoring-results/live-scoring-results-header/components/live-scoring-results-header-toggle-view/live-scoring-results-header-toggle-view.component.tsx';
 
 const LiveScoringResultsHeader = () => {
     return (
-        <LiveScoringResultsHeaderContainer>
-            <LiveScoringResultBottomHeaderContainer>
-                <LiveScoringResultDesktopSectionContainer>
-                    <LiveScoringResultBottomHeaderRightContainer>
-                        <LiveScoringClassToggle />
-                        <ResultsHeaderToggleView />
-                    </LiveScoringResultBottomHeaderRightContainer>
-                    <LiveScoringResultBottomHeaderLeftContainer>
-                        <ResultsHeaderSelectHeat />
-                    </LiveScoringResultBottomHeaderLeftContainer>
-                </LiveScoringResultDesktopSectionContainer>
-                <LiveScoringResultMobileSectionContainer>
-                    <LiveScoringClassToggle />
-                    <ResultsHeaderToggleView />
-                    <ResultsHeaderSelectHeat />
-                </LiveScoringResultMobileSectionContainer>
-            </LiveScoringResultBottomHeaderContainer>
-        </LiveScoringResultsHeaderContainer>
+        <div className="live-scoring-results-header-container">
+            <div className="live-scoring-result-bottom-header-container">
+                <div className="live-scoring-result-desktop-section-container">
+                    <div className="live-scoring-result-bottom-header-right-container">
+                        <LiveScoringResultsHeaderClassToggle />
+                        <LiveScoringResultsHeaderToggleView />
+                    </div>
+                    <div className="live-scoring-result-bottom-header-left-container">
+                        <LiveScoringResultsHeaderSelectHeat />
+                    </div>
+                </div>
+                <div className="live-scoring-result-mobile-section-container">
+                    <LiveScoringResultsHeaderClassToggle />
+                    <LiveScoringResultsHeaderToggleView />
+                    <LiveScoringResultsHeaderSelectHeat />
+                </div>
+            </div>
+        </div>
     );
 };
 
