@@ -3,6 +3,7 @@ import { useAppStore } from '@stores/app/app.store';
 import type React from 'react';
 import { useEffect } from 'react';
 import {AppState} from '@stores/app/app.state';
+import WindowPeriod from "@pages/components/WindowPeriod/window-period.component.tsx";
 
 const EventStatusPage: React.FC<Record<string, never>> = () => {
     const apiUrl = useAppStore((state: AppState) => state.apiUrl);
@@ -17,11 +18,9 @@ const EventStatusPage: React.FC<Record<string, never>> = () => {
 
     return (
         <div
-            className={`weather-container`}
+            className={`event-status-container`}
         >
-            {/*{isLoading && <LoadingComponent />}*/}
-            {/*{hasError && <ErrorComponent />}*/}
-            {/*{isEventReady && <WeatherResultsComponent />}*/}
+            <WindowPeriod></WindowPeriod>
         </div>
     );
 };

@@ -50,7 +50,7 @@ const production: CustomScriptEnvironment = {
     apiUrl: 'https://p-p.redbull.com/rb-red-bullf-diving-6e-77-prod-34bf88e41923/api/v1',
     assetUrl: 'https://p-p.redbull.com/rb-red-bullf-diving-6e-77-prod-34bf88e41923/public',
     assetId: 'rrn:content:event-profiles:416c2baf-7535-4e8b-9460-e854b1950b86',
-    windowPeriodStatus: 'Start',
+    windowPeriodStatus: 'Hold',
     startTime: '2:30pm'
 };
 
