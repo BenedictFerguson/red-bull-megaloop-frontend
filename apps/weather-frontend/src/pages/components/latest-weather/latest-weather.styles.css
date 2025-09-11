@@ -14,12 +14,15 @@
 
         .windspeed-bar {
             @apply h-[15px] w-full relative;
+
             .wind-speed-status-bar {
                 @apply z-0 rounded-r-[var(--cosmos-radius-large,8px)];
                 @apply w-full h-[calc(100%-2px)] m-[1px] absolute;
 
-                background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 7%, rgba(103,247,241,1) 13%, rgba(0,255,0,1) 19%, rgba(255,240,0,1) 27%, rgba(255,50,44,1) 35%, rgba(255,10,200,1) 45%, rgba(255,0,255,1) 54%, rgba(150,50,255,1) 64%, rgba(60,60,255,1) 86%, rgba(0,0,255,1) 100%)
+                background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 7%, rgba(103,247,241,1) 13%, rgba(0,255,0,1) 19%, rgba(255,240,0,1) 27%, rgba(255,50,44,1) 35%, rgba(255,10,200,1) 45%, rgba(255,0,255,1) 54%, rgba(150,50,255,1) 64%, rgba(60,60,255,1) 86%, rgba(0,0,255,1) 100%);
+                clip-path: xywh(0 0 var(--wind-speed-percentage, 100%) 100% round 0 var(--cosmos-radius-large,8px) var(--cosmos-radius-large,8px) 0);
             }
+
             .windspeed-graph {
                 @apply z-10 absolute;
             }

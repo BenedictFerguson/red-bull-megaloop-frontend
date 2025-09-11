@@ -118,9 +118,13 @@ const LatestWeatherComponent: React.FC = () => {
                 <CosmosText appearance="light" kind="subtle" weight="regular" size="x-small">Wind Speed Status</CosmosText>
                 <div className="windspeed-bar">
                     <div className="windspeed-graph">
-                        <WindSpeedGauge windSpeed={windSpeed} />
+                        <WindSpeedGauge windSpeed={35} />
                     </div>
-                    <div className="wind-speed-status-bar" >
+                    <div className="wind-speed-status-bar" style={
+                        {
+                            '--wind-speed-percentage': `${(windSpeed/70)*100}%`,
+                        } as React.CSSProperties
+                    }>
                     </div>
                 </div>
             </div>
