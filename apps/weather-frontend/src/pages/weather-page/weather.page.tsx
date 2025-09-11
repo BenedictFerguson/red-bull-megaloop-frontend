@@ -4,7 +4,7 @@ import LatestWeatherComponent from '@pages/components/latest-weather/latest-weat
 import HistoricWeatherComponent from '@pages/components/historic-weather/historic-weather.component';
 import CustomAccordionItem from '@pages/components/custom-accordion-item/custom-accordion-item.component';
 import {Accordion} from '@szhsin/react-accordion';
-import {useContainerQuery} from '@hooks/useContainerQuery.hook';
+import {useContainerQuery} from '@hooks/use-container-query.hook';
 import {CosmosText} from '@cosmos/web-scoped/react';
 
 const WeatherPage: React.FC<Record<string, never>> = () => {
