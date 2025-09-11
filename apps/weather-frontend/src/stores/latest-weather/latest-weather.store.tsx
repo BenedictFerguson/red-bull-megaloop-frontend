@@ -10,7 +10,7 @@ import { KsnWindLatestResults } from '@shared/models/latest-results-reponse.mode
 const storeMiddleware = (state: StateCreator<LatestWeatherState, [], []>) =>
     devtools(state, {
         store: 'megaloop-latest-weather-store',
-        enabled: false,
+        enabled: true,
         name: 'megaloop-latest-weather-store',
     });
 
