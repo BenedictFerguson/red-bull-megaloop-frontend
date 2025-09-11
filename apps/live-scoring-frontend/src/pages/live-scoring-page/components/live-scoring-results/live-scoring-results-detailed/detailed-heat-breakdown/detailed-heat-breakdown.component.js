@@ -1,20 +1,7 @@
 import React, { Fragment } from 'react';
-import {
-    AthleteRankText, BreakdownTable,
-    BreakdownTableContainer,
-    BreakdownTableHeadingText,
-    DataContainer,
-    DetailedResultBreakdownContainer,
-    HeaderContainer, HeaderRow,
-    HeaderTitleContainer,
-    HeaderTitleText,
-    RowContainer,
-    TrickCountDisplayContainer,
-    TrickNumberContainer,
-    TricksContainer,
-} from './detailed-heat-breakdown.sc';
+import './detailed-heat-breakdown.styles.css';
 import PropTypes from 'prop-types';
-import { CosmosTooltip } from '@cosmos/web-scoped/react';
+import { CosmosTooltip, CosmosTitle, CosmosText } from '@cosmos/web-scoped/react';
 import DetailedAthleteProfile
     from './detailed-heat-athlete-breakdown/detailed-athlete-profile/detailed-athlete-profile.component';
 import DetailedAthleteTrick
@@ -33,9 +20,9 @@ const DetailedResultBreakdown = ({ athletesToShow, isHeatUpcoming }) => {
                 {
                     flaggedOut ?
                         (<CosmosTooltip appearance="light" content="Flagged out" placement="above" spacing="tight">
-                            <AthleteRankText>FO</AthleteRankText>
+                            <CosmosText appearance="dark" kind="normal" size="large@small x-large@medium" spacing="none" weight="bold" className="detailed-heat-breakdown__athlete-rank">FO</CosmosText>
                         </CosmosTooltip>)
-                        : (<AthleteRankText>{rankText}</AthleteRankText>)
+                        : (<CosmosText appearance="dark" kind="normal" size="large@small x-large@medium" spacing="none" weight="bold" className="detailed-heat-breakdown__athlete-rank">{rankText}</CosmosText>)
                 }</Fragment>
         );
     };
@@ -74,7 +61,7 @@ const DetailedResultBreakdown = ({ athletesToShow, isHeatUpcoming }) => {
     };
 
     return (
-        <DetailedResultBreakdownContainer>
+        <div className="detailed-heat-breakdown__container">
             <BreakdownTableHeadingText>Heat Breakdown</BreakdownTableHeadingText>
             <BreakdownTableContainer>
                 <BreakdownTable>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {DetailedResultsAthleteCarousalContainer} from "./detailed-results-athlete-carousal.sc";
+import './detailed-results-athlete-carousal.styles.css';
 import Rail from '../../../Rail/Rail';
 import RailCard from '../../../RailCard/RailCard';
 import AthleteCarousalCard from '../athlete-carousal-card/athlete-carousal-card.component';
@@ -13,9 +13,9 @@ const DetailedResultsAthleteCarousal = ({athletesToShow, isHeatUpcoming}) => {
     )
 
     return (
-        <DetailedResultsAthleteCarousalContainer>
+        <div className="detailed-results-athlete-carousal__container">
             <Rail>{athleteCards}</Rail>
-        </DetailedResultsAthleteCarousalContainer>
+        </div>
     );
 };
 

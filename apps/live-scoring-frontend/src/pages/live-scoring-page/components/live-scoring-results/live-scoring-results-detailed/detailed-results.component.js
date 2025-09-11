@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {LiveScoringEventResultContext} from "../../../../../context/live-scoring-state.context";
-import {DetailedResultsContainer} from "./detailed-results.sc";
+import './detailed-results.styles.css';
 import {useLiveScoringState} from "../../../../../hooks/use-live-scoring-state.hook";
 import { isNil, startCase } from 'lodash';
 import DetailedResultBreakdown from "./detailed-heat-breakdown/detailed-heat-breakdown.component";
@@ -78,11 +78,11 @@ const DetailedResults = () => {
     // sort to ensure rounds are displaying in the correct order
 
     return (
-        <DetailedResultsContainer>
+        <div className="detailed-results-container">
             <DetailedResultsAthleteCarousal athletesToShow={athletesToShow} isHeatUpcoming={heatIsUpcoming}></DetailedResultsAthleteCarousal>
             <DetailedResultsAthleteStack athletesToShow={athletesToShow} isHeatUpcoming={heatIsUpcoming}></DetailedResultsAthleteStack>
             <DetailedResultBreakdown athletesToShow={athletesToShow} isHeatUpcoming={heatIsUpcoming}></DetailedResultBreakdown>
-        </DetailedResultsContainer>
+        </div>
     );
 };
 

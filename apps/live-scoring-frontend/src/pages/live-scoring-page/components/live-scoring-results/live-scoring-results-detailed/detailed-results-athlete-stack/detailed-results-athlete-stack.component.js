@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DetailedResultsAthleteStackContainer } from './detailed-results-athlete-stack.sc';
+import './detailed-results-athlete-stack.styles.css';
 import AthleteCarousalCard from '../athlete-carousal-card/athlete-carousal-card.component';
 
 const DetailedResultsAthleteStack = ({ athletesToShow, isHeatUpcoming }) => {
@@ -9,9 +9,9 @@ const DetailedResultsAthleteStack = ({ athletesToShow, isHeatUpcoming }) => {
     );
 
     return (
-        <DetailedResultsAthleteStackContainer>
+        <div className="detailed-results-athlete-stack__container">
             {athleteCards}
-        </DetailedResultsAthleteStackContainer>
+        </div>
     );
 };
 

@@ -1,0 +1,97 @@
+/* Tailwind-based styles for detailed heat breakdown */
+.detailed-heat-breakdown__container {
+  @apply bg-white rounded-[8px] p-4 overflow-hidden;
+  box-shadow: 0px 8px 12px 0px rgba(0, 15, 30, 0.04), 0px 2px 4px 0px rgba(0, 15, 30, 0.02);
+}
+
+.detailed-heat-breakdown__heading-text {
+  @apply mb-2;
+  --cosmos-title-color: #000F1E99;
+}
+
+.detailed-heat-breakdown__table-container {
+  @apply w-full overflow-auto;
+}
+
+.detailed-heat-breakdown__table {
+  @apply w-full;
+}
+
+.detailed-heat-breakdown__table tbody tr:not(:last-child) {
+  border-bottom: 1px solid #EFEFEF;
+}
+
+.detailed-heat-breakdown__header {
+  border-bottom: 1px solid #EFEFEF;
+}
+
+.detailed-heat-breakdown__row {
+  min-height: 60px;
+}
+
+.detailed-heat-breakdown__data {
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+@media (min-width: 650px) {
+  .detailed-heat-breakdown__data {
+    padding-left: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+.detailed-heat-breakdown__header-row {
+  height: 30px;
+}
+
+@media (min-width: 650px) {
+  .detailed-heat-breakdown__header-row {
+    height: 40px;
+  }
+}
+
+.detailed-heat-breakdown__header-title {
+  align-content: center;
+  padding-left: 4px;
+}
+
+@media (min-width: 650px) {
+  .detailed-heat-breakdown__header-title {
+    padding-left: 8px;
+  }
+}
+
+.detailed-heat-breakdown__header-title-text--left {
+  text-align: left;
+}
+
+.detailed-heat-breakdown__header-title-text--center {
+  text-align: center;
+}
+
+.detailed-heat-breakdown__trick-count-display {
+  @apply flex justify-between;
+}
+
+.detailed-heat-breakdown__tricks {
+  @apply flex justify-between;
+}
+
+.detailed-heat-breakdown__trick-number {
+  min-width: 100px;
+  justify-content: center;
+  text-align: center;
+}
+
+.detailed-heat-breakdown__athlete-rank {
+  width: 50px;
+}
+
+@media (min-width: 650px) {
+  .detailed-heat-breakdown__athlete-rank {
+    width: 60px;
+  }
+}

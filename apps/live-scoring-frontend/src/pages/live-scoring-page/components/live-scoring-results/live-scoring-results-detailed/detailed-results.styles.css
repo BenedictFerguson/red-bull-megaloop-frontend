@@ -1,0 +1,4 @@
+/* Tailwind-based styles for detailed results container */
+.detailed-results-container {
+  @apply w-full flex flex-col;
+}

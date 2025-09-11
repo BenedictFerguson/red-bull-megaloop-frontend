@@ -1,0 +1,10 @@
+/* Tailwind-based styles for detailed results athlete carousal */
+.detailed-results-athlete-carousal__container {
+  @apply w-full hidden flex-row pb-[var(--cosmos-spacing-loose,24px)];
+}
+
+@media (min-width: 650px) {
+  .detailed-results-athlete-carousal__container {
+    display: flex;
+  }
+}
