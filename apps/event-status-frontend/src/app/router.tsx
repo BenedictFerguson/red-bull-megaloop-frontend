@@ -1,11 +1,11 @@
 import { createMemoryRouter, type RouteObject } from 'react-router';
 import { FRONTEND_ROUTES } from '@constants/frontend-routes';
-import WeatherPage from "@pages/weather-page/weather.page.tsx";
+import EventStatusPage from '@pages/event-status-page/event-status.page';
 
 const routes: RouteObject[] = [
     {
         path: FRONTEND_ROUTES.start,
-        element: <WeatherPage />,
+        element: <EventStatusPage />,
     },
 ];
 

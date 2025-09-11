@@ -16,6 +16,8 @@ export type AppProps = {
     apiUrl: string;
     assetUrl: string;
     assetId: string;
+    windowPeriodStatus: string;
+    startTime: string;
     localisations: CustomScriptLocalisations;
     showGridLines?: boolean;
 };

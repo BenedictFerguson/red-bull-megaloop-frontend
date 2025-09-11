@@ -34,18 +34,24 @@ const dev: CustomScriptEnvironment = {
     apiUrl: 'http://localhost:8080/api/v1',
     assetUrl: 'http://localhost:8080/public',
     assetId: 'rrn:content:event-profiles:416c2baf-7535-4e8b-9460-e854b1950b86',
+    windowPeriodStatus: 'Start',
+    startTime: '2:30pm'
 };
 
 const staging: CustomScriptEnvironment = {
     apiUrl: 'https://p-p.redbull.com/rb-red-bullf-diving-6e-77-stg/api/v1',
     assetUrl: 'https://p-p.redbull.com/rb-red-bullf-diving-6e-77-stg/public',
     assetId: 'rrn:content:event-profiles:8061d4c3-4ef2-4284-8915-cc15e09b35c6',
+    windowPeriodStatus: 'Start',
+    startTime: '2:30pm'
 };
 
 const production: CustomScriptEnvironment = {
     apiUrl: 'https://p-p.redbull.com/rb-red-bullf-diving-6e-77-prod-34bf88e41923/api/v1',
     assetUrl: 'https://p-p.redbull.com/rb-red-bullf-diving-6e-77-prod-34bf88e41923/public',
     assetId: 'rrn:content:event-profiles:416c2baf-7535-4e8b-9460-e854b1950b86',
+    windowPeriodStatus: 'Start',
+    startTime: '2:30pm'
 };
 
 const env: CustomScriptEnvironment = production;

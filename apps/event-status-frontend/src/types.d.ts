@@ -158,6 +158,8 @@ declare type CustomScriptEnvironment = {
     apiUrl: string;
     assetUrl: string;
     assetId: string;
+    windowPeriodStatus: string;
+    startTime: string;
 };
 
 // Declare the global window property for better type safety
