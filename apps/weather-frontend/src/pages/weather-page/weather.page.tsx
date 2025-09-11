@@ -6,11 +6,14 @@ import CustomAccordionItem from '@pages/components/custom-accordion-item/custom-
 import {Accordion} from '@szhsin/react-accordion';
 import {useContainerQuery} from '@hooks/use-container-query.hook';
 import {CosmosText} from '@cosmos/web-scoped/react';
+import {useBreakpoint} from "@hooks/use-breakpoint.hook.tsx";
 
 const WeatherPage: React.FC<Record<string, never>> = () => {
     const sampleContainerRef = useRef<HTMLDivElement | null>(null);
     const {height: sampleContainerHeight} =
         useContainerQuery(sampleContainerRef);
+
+    const isMobile = useBreakpoint(640); // 👈 Use the hook (640px is sm breakpoint)
 
     const accordionHeader = (<CosmosText
         appearance="light"
@@ -27,16 +30,20 @@ const WeatherPage: React.FC<Record<string, never>> = () => {
             <div ref={sampleContainerRef}>
                 <LatestWeatherComponent />
             </div>
-            <div className="historic-weather-accordion-container">
-                <Accordion>
-                    <CustomAccordionItem header={accordionHeader}>
-                        <HistoricWeatherComponent height={sampleContainerHeight + 'px'} inAccordion={true}/>
-                    </CustomAccordionItem>
-                </Accordion>
-            </div>
-            <div className="historic-weather-column-container">
-                <HistoricWeatherComponent height={sampleContainerHeight + 'px'} />
-            </div>
+            {/* Conditionally render based on the breakpoint */}
+            {isMobile ? (
+                <div className="historic-weather-accordion-container">
+                    <Accordion>
+                        <CustomAccordionItem header={accordionHeader}>
+                            <HistoricWeatherComponent height={sampleContainerHeight + 'px'} inAccordion={true}/>
+                        </CustomAccordionItem>
+                    </Accordion>
+                </div>
+            ) : (
+                <div className="historic-weather-column-container">
+                    <HistoricWeatherComponent height={sampleContainerHeight + 'px'} />
+                </div>
+            )}
         </div>
     );
 };
