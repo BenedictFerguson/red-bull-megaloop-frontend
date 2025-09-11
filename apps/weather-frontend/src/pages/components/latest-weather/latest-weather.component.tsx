@@ -93,7 +93,7 @@ const LatestWeatherComponent: React.FC = () => {
                 </CosmosText>
                 <div className="compass-container">
                     <svg width={compassLength} height={compassLength} viewBox={`0 0 ${compassLength} ${compassLength}`} fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M31.6165 18.8743L22.0904 43.7598C21.9342 44.1684 22.3841 44.5432 22.7577 44.3155L31.7716 38.8181C31.9187 38.728 32.104 38.7283 32.2511 38.8191L41.2408 44.3501C41.6135 44.5798 42.0652 44.2065 41.9102 43.797L32.4741 18.876C32.3245 18.4816 31.7672 18.4805 31.6165 18.8743Z" fill="white" transform={`rotate(${windDirection},${compassLength/2},${compassLength/2})`}/>
+                        <path d="M31.6165 18.8743L22.0904 43.7598C21.9342 44.1684 22.3841 44.5432 22.7577 44.3155L31.7716 38.8181C31.9187 38.728 32.104 38.7283 32.2511 38.8191L41.2408 44.3501C41.6135 44.5798 42.0652 44.2065 41.9102 43.797L32.4741 18.876C32.3245 18.4816 31.7672 18.4805 31.6165 18.8743Z" fill="white" transform={`rotate(${windDirection+180},${compassLength/2},${compassLength/2})`}/>
                         <path d="M32 59.2478C47.3039 59.2478 59.7102 46.8247 59.7102 31.5C59.7102 16.1753 47.3039 3.7522 32 3.7522C16.6961 3.7522 4.28976 16.1753 4.28976 31.5C4.28976 46.8247 16.6961 59.2478 32 59.2478Z" stroke="url(#paint0_linear_171_4213)" stroke-width="6.25" stroke-miterlimit="1"/>
                         <path d="M30.3494 12.1794V7.93945H31.2944L32.7875 10.7115V7.93945H33.6506V12.1794H32.7245L31.2125 9.36325V12.1794H30.3494Z" fill="white"/>
                         <defs>
