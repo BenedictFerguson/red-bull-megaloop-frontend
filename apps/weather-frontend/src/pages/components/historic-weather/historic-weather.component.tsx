@@ -20,7 +20,12 @@ import CustomWeatherTooltipComponent
 import { formatXAxis } from '@pages/helpers/historic-graph.helpers';
 import {CosmosText} from "@cosmos/web-scoped/react";
 
-const HistoricWeatherComponent = () => {
+interface HistoricalWeatherProps {
+    height: string;
+    inAccordion?: boolean;
+}
+
+const HistoricWeatherComponent = ({ height, inAccordion = false }: HistoricalWeatherProps) => {
     const apiUrl = useAppStore((state: AppState) => state.apiUrl);
     const tenantCredentials = useAppStore((state: AppState) => state.tenantCredentials);
 
@@ -35,16 +40,25 @@ const HistoricWeatherComponent = () => {
     const data = useMemo(() => historicData, [historicData]);
 
     return (
-        <div className="historic-weather-container">
-            <CosmosText
-                appearance="light"
-                kind="subtle"
-                size="x-small"
-                spacing="none"
-                weight="regular"
-            >
-                Historical Wind
-            </CosmosText>
+        <div
+            className="historic-weather-container"
+            style={
+                {
+                    '--latest-weather-height': `${height}`,
+                } as React.CSSProperties
+            }
+        >
+            {
+                !inAccordion &&  (<CosmosText
+                    appearance="light"
+                    kind="subtle"
+                    size="x-small"
+                    spacing="none"
+                    weight="regular"
+                >
+                    Historical Wind
+                </CosmosText>)
+            }
             <ResponsiveContainer width="100%" height="100%">
                 <ComposedChart
                     width={500}
