@@ -4,6 +4,8 @@ import {HistoricData, HistoricWeatherState} from '@stores/historic-weather/histo
 import { TimeLineWind } from '@shared/models/historic-results-response.model';
 import { DateTime } from 'luxon';
 
+const HISTORIC_DATA_INTERVALS_FOR_GRAPH: number = 15;
+
 /**
  * The Historic Weather Store middleware
  * @param {StateCreator<HistoricWeatherState, [], []>} state
@@ -27,7 +29,7 @@ export const useHistoricWeatherStore = create<HistoricWeatherState>()(
 
         data: [],
         setData: (data: TimeLineWind[]) => {
-                const formattedTimeData: HistoricData[] = data.map((entry: TimeLineWind) => {
+                const formattedTimeData: HistoricData[] = data.filter((_,index) => index % HISTORIC_DATA_INTERVALS_FOR_GRAPH === 0).map((entry: TimeLineWind) => {
                         return {
                                 ...entry,
                                 date: DateTime.fromISO(entry.dateTime, {zone: 'utc'}).toMillis(),
