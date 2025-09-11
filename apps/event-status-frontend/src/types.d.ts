@@ -155,9 +155,6 @@ declare type CustomScriptLocalisations = {
 };
 
 declare type CustomScriptEnvironment = {
-    socketUrl: string;
-    socketPath: string;
-    socketEventName: string;
     apiUrl: string;
     assetUrl: string;
     assetId: string;
