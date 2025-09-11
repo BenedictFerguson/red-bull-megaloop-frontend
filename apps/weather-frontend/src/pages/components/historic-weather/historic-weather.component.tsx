@@ -18,6 +18,7 @@ import { HistoricWeatherState } from '@stores/historic-weather/historic-weather.
 import CustomWeatherTooltipComponent
     from '@pages/components/custom-weather-tooltip/custom-weather-tooltip.component';
 import { formatXAxis } from '@pages/helpers/historic-graph.helpers';
+import {CosmosText} from "@cosmos/web-scoped/react";
 
 const HistoricWeatherComponent = () => {
     const apiUrl = useAppStore((state: AppState) => state.apiUrl);
@@ -35,17 +36,26 @@ const HistoricWeatherComponent = () => {
 
     return (
         <div className="historic-weather-container">
+            <CosmosText
+                appearance="light"
+                kind="subtle"
+                size="x-small"
+                spacing="none"
+                weight="regular"
+            >
+                Historical Wind
+            </CosmosText>
             <ResponsiveContainer width="100%" height="100%">
                 <ComposedChart
                     width={500}
                     height={400}
                     data={data}
-                    margin={{
-                        top: 40,
-                        right: 40,
-                        bottom: 40,
-                        left: 20,
-                    }}
+                    // margin={{
+                    //     top: 40,
+                    //     right: 40,
+                    //     bottom: 40,
+                    //     left: 20,
+                    // }}
                 >
                     <CartesianGrid stroke="rgba(243,243,243,0.15)" />
                     <XAxis dataKey="date" tickFormatter={formatXAxis} tick={{fontSize: 12}} type="number"

@@ -2,4 +2,6 @@
     @apply bg-[var(--cosmos-color-surface-glass-light-5,rgba(255,255,255,0.05))];
     @apply rounded-[var(--cosmos-radius-large,8px)];
     @apply w-full h-full;
+    @apply flex flex-col gap-[10px];
+    @apply p-[var(--cosmos-spacing-xx-loose,40px)];
 }
