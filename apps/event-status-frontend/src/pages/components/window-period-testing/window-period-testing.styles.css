@@ -1,0 +1,4 @@
+.window-period-testing-container {
+    @apply flex flex-row justify-center gap-[var(--cosmos-spacing-x-tight,8px)];
+    @apply pb-[var(--cosmos-spacing-loose)];
+}

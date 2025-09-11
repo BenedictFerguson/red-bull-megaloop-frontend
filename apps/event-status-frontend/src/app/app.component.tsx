@@ -9,6 +9,7 @@ import { RouterProvider } from 'react-router';
 import type { CustomScriptLocalisations } from '@types';
 import LocalisationsContext from '../contexts/localisations.context';
 import GridHelper from '@app/components/grid-helper/grid-helper.component';
+import WindowPeriodTesting from "@pages/components/window-period-testing/window-period-testing.component.tsx";
 
 export type AppProps = {
     topSpacing: string;
@@ -19,6 +20,7 @@ export type AppProps = {
     windowPeriodStatus: string;
     startTime: string;
     localisations: CustomScriptLocalisations;
+    isTesting: boolean;
     showGridLines?: boolean;
 };
 
@@ -32,6 +34,7 @@ const App: React.FC<AppProps> = ({
     windowPeriodStatus,
     startTime,
     localisations,
+    isTesting = false,
     showGridLines = false,
 }: AppProps) => {
     // Panel Spacing Configuration
@@ -99,6 +102,7 @@ const App: React.FC<AppProps> = ({
             <LocalisationsContext.Provider value={localisations}>
                 <GridHelper shouldDisplay={showGridLines} />
                 <div className="app-container">
+                    { isTesting && <WindowPeriodTesting/>}
                     <RouterProvider router={router} />
                 </div>
             </LocalisationsContext.Provider>

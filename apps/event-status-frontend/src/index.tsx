@@ -62,6 +62,7 @@ const appProps: AppProps = {
     bottomSpacing: 'medium',
     localisations: testLocalisations,
     showGridLines: false,
+    isTesting: true
 };
 
 if (root) {
