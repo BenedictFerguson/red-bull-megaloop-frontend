@@ -13,7 +13,7 @@ const WeatherPage: React.FC<Record<string, never>> = () => {
     const {height: sampleContainerHeight} =
         useContainerQuery(sampleContainerRef);
 
-    const isMobile = useBreakpoint(640); // 👈 Use the hook (640px is sm breakpoint)
+    const isMobile = useBreakpoint(768); // 👈 Use the hook (640px is sm breakpoint, 768px is the md breakpoint)
 
     const accordionHeader = (<CosmosText
         appearance="light"

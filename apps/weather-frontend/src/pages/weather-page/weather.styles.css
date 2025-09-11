@@ -1,12 +1,11 @@
 .weather-container {
-  @apply w-full h-full grid sm:grid-cols-[1fr_2fr] gap-[var(--cosmos-spacing-normal,16px)];
-
+  @apply w-full h-full grid md:grid-cols-[1fr_2fr] gap-[var(--cosmos-spacing-normal,16px)];
 
   .historic-weather-accordion-container {
-    @apply sm:hidden;
+    @apply md:hidden;
   }
   .historic-weather-column-container {
-    @apply hidden sm:block;
+    @apply hidden md:block;
   }
 
 }
