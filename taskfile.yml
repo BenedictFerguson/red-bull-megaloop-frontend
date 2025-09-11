@@ -15,6 +15,7 @@ tasks:
             - task pull-secrets
             - task setup-live-scoring-frontend
             - task setup-weather-frontend
+            - task setup-event-status-frontend
 
     dev-live:
         desc: 'Starts the Live Scoring development environment'
@@ -27,6 +28,12 @@ tasks:
         dir: devops/dev
         cmds:
             - task start-weather
+
+    dev-event-status:
+        desc: 'Starts the Event Window Status development environment'
+        dir: devops/dev
+        cmds:
+            - task start-event-status
 
     dev:
         desc: 'Starts the all development environment apps in parallel'

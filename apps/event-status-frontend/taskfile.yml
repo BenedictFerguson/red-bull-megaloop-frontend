@@ -1,0 +1,7 @@
+version: "3"
+tasks:
+  init:
+    desc: "Initialize the Event Status frontend"
+    cmds:
+      - echo "Initializing the Event Status frontend..."
+      - pnpm install

@@ -29,3 +29,10 @@ tasks:
         cmds:
             - echo "Starting State of Play dev environment..."
             - pnpm run start:dev
+
+    start-event-status:
+        desc: "Starts the Event Window Status rspack dev server"
+        dir: ../../apps/event-status-frontend
+        cmds:
+            - echo "Starting Event Window Status dev environment..."
+            - pnpm run start:dev

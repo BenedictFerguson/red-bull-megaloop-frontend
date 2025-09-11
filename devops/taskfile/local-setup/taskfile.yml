@@ -29,6 +29,12 @@ tasks:
     cmds:
       - task init
 
+  setup-event-status-frontend:
+    desc: 'Set up the event window status frontend for the project'
+    dir: ../../../apps/event-status-frontend
+    cmds:
+      - task init
+
   pull-secrets:
     desc: "Pulls the secrets from the 1Password vault"
     dir: ../../dev
