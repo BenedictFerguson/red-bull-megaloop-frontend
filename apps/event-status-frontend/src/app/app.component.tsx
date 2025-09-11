@@ -29,6 +29,8 @@ const App: React.FC<AppProps> = ({
     apiUrl,
     assetUrl,
     assetId,
+    windowPeriodStatus,
+    startTime,
     localisations,
     showGridLines = false,
 }: AppProps) => {
@@ -44,6 +46,8 @@ const App: React.FC<AppProps> = ({
     const setApiUrl = useAppStore((state) => state.setApiUrl);
     const setAssetUrl = useAppStore((state) => state.setAssetUrl);
     const setAssetId = useAppStore((state) => state.setAssetId);
+    const setWindowPeriodStatus = useAppStore((state) => state.setWindowPeriodStatus);
+    const setStartTime = useAppStore((state) => state.setStartTime);
 
     useEffect(() => {
         if (!isNil(apiUrl) && !isEmpty(apiUrl)) {
@@ -70,6 +74,24 @@ const App: React.FC<AppProps> = ({
     }, [
         assetId,
         setAssetId,
+    ]);
+
+    useEffect(() => {
+        if (!isEmpty(windowPeriodStatus)) {
+            setWindowPeriodStatus(windowPeriodStatus);
+        }
+    }, [
+        windowPeriodStatus,
+        setWindowPeriodStatus,
+    ]);
+
+    useEffect(() => {
+        if (!isEmpty(startTime)) {
+            setStartTime(startTime);
+        }
+    }, [
+        startTime,
+        setStartTime,
     ]);
 
     return (
