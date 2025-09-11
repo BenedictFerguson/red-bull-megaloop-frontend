@@ -1,7 +1,7 @@
 .app {
   @apply w-full flex flex-col;
 
-  --state-of-play-container-background: #37302a;
+  --state-of-play-container-background: #1D353E;
   background: var(
     --panel__background,
     var(--state-of-play-container-background, #f8f8f8)
