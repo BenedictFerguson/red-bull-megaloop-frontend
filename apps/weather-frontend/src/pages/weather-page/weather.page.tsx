@@ -6,7 +6,7 @@ import CustomAccordionItem from '@pages/components/custom-accordion-item/custom-
 import {Accordion} from '@szhsin/react-accordion';
 import {useContainerQuery} from '@hooks/use-container-query.hook';
 import {CosmosText} from '@cosmos/web-scoped/react';
-import {useBreakpoint} from "@hooks/use-breakpoint.hook.tsx";
+import {useBreakpoint} from '@hooks/use-breakpoint.hook';
 
 const WeatherPage: React.FC<Record<string, never>> = () => {
     const sampleContainerRef = useRef<HTMLDivElement | null>(null);
