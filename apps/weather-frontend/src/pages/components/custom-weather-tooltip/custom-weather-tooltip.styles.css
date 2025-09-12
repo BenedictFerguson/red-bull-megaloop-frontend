@@ -1,4 +1,6 @@
 .tooltip-container {
+    @apply flex flex-col;
+    @apply  gap-[var(--cosmos-spacing-x-tight,10px)];
     background-color: white;
     border-radius: 8px;
     box-shadow: 0.0px 8.0px 12.0px 0px rgba(0, 15, 30, 0.04), 0.0px 2.0px 4.0px 0px rgba(0, 15, 30, 0.02);
