@@ -1,13 +1,19 @@
 import React from "react";
 import './window-period.styles.css';
-import {CosmosIconHourglassFull, CosmosText, CosmosTitle} from "@cosmos/web-scoped/react";
-import {useAppStore} from "@stores/app/app.store.tsx";
-import {AppState} from "@stores/app/app.state.ts";
-import WINDOW_PERIOD_CONFIG from "@constants/window-period-config.constant.tsx";
+import { CosmosText, CosmosTitle } from '@cosmos/web-scoped/react';
+import { useAppStore } from '@stores/app/app.store';
+import { AppState } from '@stores/app/app.state';
+import WINDOW_PERIOD_CONFIG from '@constants/window-period-config.constant';
+import isNil from "lodash/isNil";
 
 const WindowPeriod = () => {
     const windowPeriodStatus = useAppStore((state: AppState) => state.windowPeriodStatus);
     const startTime = useAppStore((state: AppState) => state.startTime);
+
+    if (isNil(windowPeriodStatus)) {
+        console.error('WindowPeriod not found.');
+        return null;
+    }
 
     const windowPeriodDetails = WINDOW_PERIOD_CONFIG[windowPeriodStatus];
 

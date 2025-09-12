@@ -39,7 +39,7 @@ export const useAppStore = create<AppState>()(
                 }),
             ),
 
-        windowPeriodStatus: 'Start',
+        windowPeriodStatus: null,
         setWindowPeriodStatus: (newWindowPeriodStatus: string) => set(
             produce<AppState>((state) => {
                 state.windowPeriodStatus = newWindowPeriodStatus;

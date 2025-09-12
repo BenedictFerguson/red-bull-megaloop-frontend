@@ -1,26 +1,16 @@
 import './event-status.styles.css';
 import { useAppStore } from '@stores/app/app.store';
 import type React from 'react';
-import { useEffect } from 'react';
 import {AppState} from '@stores/app/app.state';
-import WindowPeriod from "@pages/components/WindowPeriod/window-period.component.tsx";
+import WindowPeriod from '@pages/components/WindowPeriod/window-period.component';
+import isNil from 'lodash/isNil';
 
 const EventStatusPage: React.FC<Record<string, never>> = () => {
-    const apiUrl = useAppStore((state: AppState) => state.apiUrl);
-    const assetId = useAppStore((state: AppState) => state.assetId);
-
-    useEffect(() => {
-        // EventService.getInstance().fetchEvents(apiUrl, assetId).then();
-    }, [
-        apiUrl,
-        assetId,
-    ]);
+    const windowPeriodStatus = useAppStore((state: AppState) => state.windowPeriodStatus);
 
     return (
-        <div
-            className={`event-status-container`}
-        >
-            <WindowPeriod></WindowPeriod>
+        <div className="event-status-container">
+            { !isNil(windowPeriodStatus) && (<WindowPeriod />)}
         </div>
     );
 };

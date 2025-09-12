@@ -16,6 +16,6 @@ export interface AppState extends AppActions, AppStateSelectors {
     apiUrl: string;
     assetUrl: string;
     assetId: string | null;
-    windowPeriodStatus: string;
+    windowPeriodStatus: string | null;
     startTime: string;
 }
