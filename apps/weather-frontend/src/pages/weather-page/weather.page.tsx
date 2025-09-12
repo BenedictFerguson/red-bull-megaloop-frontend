@@ -46,7 +46,7 @@ const WeatherPage: React.FC<Record<string, never>> = () => {
                         <LatestWeatherComponent />
                     </div>
                     <div className="historic-weather-column-container">
-                        <HistoricWeatherComponent height={sampleContainerHeight + 'px'} />
+                        <HistoricWeatherComponent height={( sampleContainerHeight || 300 ) + 'px'} />
                     </div>
                 </Fragment>
 

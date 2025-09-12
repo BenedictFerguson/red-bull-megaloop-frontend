@@ -69,7 +69,7 @@ const appProps: AppProps = {
     bottomSpacing: 'medium',
     localisations: testLocalisations,
     showGridLines: false,
-    theme: CosmosTheme.dark
+    theme: CosmosTheme.light
 };
 
 if (root) {

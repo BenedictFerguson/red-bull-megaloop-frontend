@@ -2,7 +2,7 @@
   @apply w-full flex flex-col;
   --weather-container-background: rgb(29,53,62);
 
-  /*--panel__background: white;*/
+  --panel__background: white;
 
   background: var(
     --panel__background,

@@ -96,9 +96,9 @@ const LatestWeatherComponent= ({ additionalClasses }: LatestWeatherProps) => {
 
     const compassLength = 64;
 
-    const compassLightThemeColour = 'black';
-    const compassDarkThemeColour = "#FBFCFF";
-    const compassColour = theme === CosmosTheme.dark ? compassDarkThemeColour : theme === CosmosTheme.light ? compassLightThemeColour : 'white';
+    const compassLightThemeColour: string = 'rgba(0,15,30,0.9)';
+    const compassDarkThemeColour: string = "#FBFCFF";
+    const compassColour: string = theme === CosmosTheme.dark ? compassDarkThemeColour : theme === CosmosTheme.light ? compassLightThemeColour : 'white';
 
     return (
         <div className={`latest-weather-container ${theme} ${additionalClasses}`}>

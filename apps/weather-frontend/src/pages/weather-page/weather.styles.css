@@ -9,7 +9,25 @@
   }
   .mobile-weather-container {
     &.light {
-      @apply bg-[var(--cosmos-color-surface-glass-dark-5,rgba(255,255,255,0.05))];
+      /*@apply bg-[var(--cosmos-color-surface-glass-dark-5,rgba(255,255,255,0.05))];*/
+      @apply bg-[var(--cosmos-color-surface-solid-light-lighter,#FFFFFF)];
+      @apply border border-solid border-[var(--cosmos-color-surface-solid-light-darker,#EFEFEF)];
+
+      box-sizing: border-box;
+      box-shadow: 0px 2px 4px rgba(0, 15, 30, 0.02), 0px 8px 12px rgba(0, 15, 30, 0.04);
+
+      /* cosmos-color/surface/solid/light/lighter
+
+      cosmos-color-surface-solid-light-lighter
+      */
+      /*background: #FFFFFF;*/
+      /* cosmos-color/surface/solid/light/darker
+
+      cosmos-color-surface-solid-light-darker
+      */
+      /*border: 1px solid #EFEFEF;*/
+      /* cosmos-elevation/1-above */
+
     }
     &.dark {
       @apply bg-[var(--cosmos-color-surface-glass-light-5,rgba(255,255,255,0.05))];
