@@ -15,5 +15,6 @@
       @apply bg-[var(--cosmos-color-surface-glass-light-5,rgba(255,255,255,0.05))];
     }
     @apply rounded-[var(--cosmos-radius-large,8px)];
+    @apply pb-[var(--cosmos-spacing-tight,12px)];
   }
 }

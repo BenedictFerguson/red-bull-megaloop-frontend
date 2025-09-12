@@ -46,23 +46,21 @@ const HistoricWeatherComponent = ({ height, inAccordion = false }: HistoricalWea
 
     return (
         <div
-            className={`historic-weather-container ${theme}`}
+            className={`historic-weather-container ${theme} ${inAccordion ? 'is-mobile' : ''}`}
             style={
                 {
                     '--latest-weather-height': `${height}`,
                 } as React.CSSProperties
             }
         >
-            {
-                !inAccordion &&  (<CosmosText
-                    kind="subtle"
-                    size="x-small"
-                    spacing="none"
-                    weight="regular"
-                >
-                    Historical Wind
-                </CosmosText>)
-            }
+            <CosmosText
+                kind="subtle"
+                size="x-small"
+                spacing="none"
+                weight="regular"
+            >
+                Historical Wind
+            </CosmosText>
             <ResponsiveContainer width="100%" height="100%">
                 <ComposedChart
                     width={500}

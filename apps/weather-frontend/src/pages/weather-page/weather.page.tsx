@@ -29,13 +29,13 @@ const WeatherPage: React.FC<Record<string, never>> = () => {
     return (
         <div className="weather-container">
             {/* Conditionally render based on the breakpoint */}
-            {isMobile ? (
+            { isMobile ? (
                 <div className="historic-weather-accordion-container">
                     <div className={`mobile-weather-container ${theme}`}>
                         <LatestWeatherComponent additionalClasses="is-mobile" />
                         <Accordion>
                             <CustomAccordionItem>
-                                <HistoricWeatherComponent height={'100vh'} inAccordion={true}/>
+                                <HistoricWeatherComponent height={'50vh'} inAccordion={true}/>
                             </CustomAccordionItem>
                         </Accordion>
                     </div>

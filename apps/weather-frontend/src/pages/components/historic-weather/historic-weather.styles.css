@@ -10,4 +10,10 @@
     &.light {
         @apply bg-[var(--cosmos-color-surface-glass-dark-5,rgba(255,255,255,0.05))];
     }
+
+    &.is-mobile {
+        /*@apply p-[var(--cosmos-spacing-tight,12px)];*/
+        @apply p-0; /* in this particular case, the padding has already been added */
+        background-color: unset;
+    }
 }
