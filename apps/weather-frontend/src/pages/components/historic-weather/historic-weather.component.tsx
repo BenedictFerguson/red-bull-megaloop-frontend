@@ -73,7 +73,11 @@ const HistoricWeatherComponent = ({ height, inAccordion = false }: HistoricalWea
                            scale="time"
                            domain={['dataMin', 'dataMax']}
                     />
-                    <YAxis label={{value: 'Knots', angle: -90, position: 'insideLeft', fontSize: 12,  offset: 20}} tick={{fontSize: 12}} />
+                    <YAxis
+                        label={{value: 'Knots', angle: -90, position: 'insideLeft', fontSize: 12,  offset: 20}}
+                        tick={{fontSize: 12}}
+                        domain={[0,dataMax => (Math.round(dataMax + 10))]}
+                    />
                     <Tooltip content={CustomWeatherTooltipComponent}/>
                     <Area type="monotone" dataKey="gustSpeed" fill="rgba(217,217,217,0.16)" stroke="rgba(217,217,217,0.16)" unit=" Knots" name="Gust Speed"/>
                     <Line type="monotone" dataKey="windSpeed" stroke="rgb(0,22,43)" dot={false} strokeWidth={4} unit=" Knots" name="Wind Speed"/>
