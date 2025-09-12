@@ -74,8 +74,8 @@ const appProps: AppProps = {
 
 if (root) {
     ReactDOM.createRoot(root).render(
-        // <React.StrictMode>
+        <React.StrictMode>
             <AppComponent {...appProps} />
-        // </React.StrictMode>,
+        </React.StrictMode>,
     );
 }
