@@ -5,8 +5,14 @@
     &.dark {
         @apply bg-[var(--cosmos-color-surface-glass-light-5,rgba(255,255,255,0.05))];
     }
+    @apply rounded-[var(--cosmos-radius-large,8px)];
 
-    @apply p-[var(--cosmos-spacing-xx-loose,40px)] rounded-[var(--cosmos-radius-large,8px)];
+    &.is-mobile {
+        @apply p-[var(--cosmos-spacing-tight,12px)];
+        background-color: unset;
+    }
+
+    @apply p-[var(--cosmos-spacing-xx-loose,40px)];
     @apply w-full flex flex-col items-center gap-[var(--cosmos-spacing-tight,12px)];
 
 

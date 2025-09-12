@@ -7,5 +7,13 @@
   .historic-weather-column-container {
     @apply hidden md:block;
   }
-
+  .mobile-weather-container {
+    &.light {
+      @apply bg-[var(--cosmos-color-surface-glass-dark-5,rgba(255,255,255,0.05))];
+    }
+    &.dark {
+      @apply bg-[var(--cosmos-color-surface-glass-light-5,rgba(255,255,255,0.05))];
+    }
+    @apply rounded-[var(--cosmos-radius-large,8px)];
+  }
 }

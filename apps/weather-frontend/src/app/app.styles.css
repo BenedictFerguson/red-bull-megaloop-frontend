@@ -2,6 +2,8 @@
   @apply w-full flex flex-col;
   --weather-container-background: rgb(29,53,62);
 
+  --panel__background: white;
+
   background: var(
     --panel__background,
     var(--weather-container-background, #f8f8f8)

@@ -62,7 +62,12 @@ const WindSpeedGauge = ({ windSpeed, theme }: WindSpeedGaugeProps) => {
     );
 };
 
-const LatestWeatherComponent: React.FC = () => {
+interface LatestWeatherProps {
+    additionalClasses?: string;
+    isMobile?: boolean;
+}
+
+const LatestWeatherComponent= ({ additionalClasses }: LatestWeatherProps) => {
     const apiUrl = useAppStore((state: AppState) => state.apiUrl);
     const tenantCredentials = useAppStore((state: AppState) => state.tenantCredentials);
     const theme = useAppStore((state: AppState) => state.theme);
@@ -83,7 +88,7 @@ const LatestWeatherComponent: React.FC = () => {
 
     if (isLoadingLatestWeather) {
         return (
-            <div className="latest-weather-container h-[300px] justify-center">
+            <div className={`latest-weather-container h-[300px] justify-center ${additionalClasses}`}>
                 <CosmosSpinner  />
             </div>
         )
@@ -96,7 +101,7 @@ const LatestWeatherComponent: React.FC = () => {
     const compassColour = theme === CosmosTheme.dark ? compassDarkThemeColour : theme === CosmosTheme.light ? compassLightThemeColour : 'white';
 
     return (
-        <div className={`latest-weather-container ${theme}`}>
+        <div className={`latest-weather-container ${theme} ${additionalClasses}`}>
             <div className="wind-direction-container">
                 <CosmosText
                     kind="subtle"

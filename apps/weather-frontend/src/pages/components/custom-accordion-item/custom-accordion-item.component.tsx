@@ -1,6 +1,6 @@
 import './custom-accordion-item.styles.css';
 import { useAccordionItem, useAccordionItemEffect, } from '@szhsin/react-accordion';
-import { CosmosIconChevronDown, CosmosIconChevronUp, } from '@cosmos/web-scoped/react';
+import {CosmosButton, CosmosIconChevronDown, CosmosIconChevronUp,} from '@cosmos/web-scoped/react';
 import type React from 'react';
 import { useEffect, useRef } from 'react';
 import isEmpty from 'lodash/isEmpty';
@@ -16,7 +16,6 @@ import isEmpty from 'lodash/isEmpty';
  */
 interface CustomAccordionItemProps {
     className?: string;
-    header: React.ReactNode;
     children: React.ReactNode;
     itemKey?: string | number;
     initialEntered?: boolean;
@@ -26,7 +25,6 @@ interface CustomAccordionItemProps {
 // Reference: https://szhsin.github.io/react-accordion/docs/headless-ui/accordion-item#height-transition
 const CustomAccordionItem: React.FC<CustomAccordionItemProps> = ({
     className,
-    header,
     children,
     itemKey,
     initialEntered,
@@ -86,21 +84,21 @@ const CustomAccordionItem: React.FC<CustomAccordionItemProps> = ({
 
     return (
         <div className={`accordion-item ${className || ''}`} ref={itemRef}>
-            <h3 style={{ margin: 0 }}>
-                <button
-                    className={`accordion-button ${isEnter ? 'buttonExpanded' : ''}`}
+                <CosmosButton
+                    className={`accordion-button justify-center ${isEnter ? 'buttonExpanded' : ''}`}
                     type="button"
                     {...buttonProps}
+                    kind="secondary"
+                    size="small"
+                    shape="rectangle"
                 >
-                    {header}
                     {!isEnter && (
-                        <CosmosIconChevronDown className={'accordion-icon'} />
+                        'Show History'
                     )}
                     {isEnter && (
-                        <CosmosIconChevronUp className={'accordion-icon'} />
+                        'Hide History'
                     )}
-                </button>
-            </h3>
+                </CosmosButton>
             {isMounted && (
                 <div className="accordion-content" ref={contentRef}>
                     <div
