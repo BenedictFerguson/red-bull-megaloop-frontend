@@ -34,9 +34,8 @@
     }
 
     .window-period-icon-container {
-        @apply flex ;
+        @apply flex;
         justify-content: center;
-        padding-bottom: 16px;
         height: 80px;
 
         .status-icon {

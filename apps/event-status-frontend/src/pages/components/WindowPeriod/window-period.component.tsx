@@ -35,7 +35,7 @@ const WindowPeriod = () => {
         <CosmosText
             appearance="light"
             kind="normal"
-            size="small"
+            size="medium"
             spacing="none"
             weight="bold"
             className="window-period-status-copy"
