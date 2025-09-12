@@ -64,19 +64,16 @@ const HistoricWeatherComponent = ({ height, inAccordion = false }: HistoricalWea
                     width={500}
                     height={400}
                     data={data}
-                    // margin={{
-                    //     top: 40,
-                    //     right: 40,
-                    //     bottom: 40,
-                    //     left: 20,
-                    // }}
+                    margin={{
+                        left: -10,
+                    }}
                 >
                     <CartesianGrid stroke="rgba(243,243,243,0.15)" />
                     <XAxis dataKey="date" tickFormatter={formatXAxis} tick={{fontSize: 12}} type="number"
                            scale="time"
                            domain={['dataMin', 'dataMax']}
                     />
-                    <YAxis label={{value: 'Knots', angle: -90, position: 'insideLeft', fontSize: 12}} tick={{fontSize: 12}} />
+                    <YAxis label={{value: 'Knots', angle: -90, position: 'insideLeft', fontSize: 12,  offset: 20}} tick={{fontSize: 12}} />
                     <Tooltip content={CustomWeatherTooltipComponent}/>
                     <Area type="monotone" dataKey="gustSpeed" fill="rgba(217,217,217,0.16)" stroke="rgba(217,217,217,0.16)" unit=" Knots" name="Gust Speed"/>
                     <Line type="monotone" dataKey="windSpeed" stroke="rgb(0,22,43)" dot={false} strokeWidth={4} unit=" Knots" name="Wind Speed"/>
