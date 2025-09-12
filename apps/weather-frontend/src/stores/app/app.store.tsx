@@ -4,6 +4,7 @@ import { devtools } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 import type { AppState } from '@stores/app/app.state';
 import { BaseTenantCredentials, TenantCredentials } from '@shared/models/tenant-credentials.model';
+import { CosmosTheme } from '@enums/cosmos-theme.enum';
 
 const storeMiddleware = (state: StateCreator<AppState, [], []>) =>
     devtools(
@@ -45,6 +46,14 @@ export const useAppStore = create<AppState>()(
                     state.tenantCredentials = newTenantCredentials;
                 })
             ),
+
+        theme: CosmosTheme.dark,
+
+        setTheme: (newTheme: CosmosTheme) => set(
+            produce<AppState>((state) => {
+                state.theme = newTheme;
+            })
+        ),
 
         resetAppState: () =>
             set({

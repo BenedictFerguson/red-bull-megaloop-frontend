@@ -16,7 +16,6 @@ const WeatherPage: React.FC<Record<string, never>> = () => {
     const isMobile = useBreakpoint(768); // 👈 Use the hook (640px is sm breakpoint, 768px is the md breakpoint)
 
     const accordionHeader = (<CosmosText
-        appearance="light"
         kind="subtle"
         size="x-small"
         spacing="none"

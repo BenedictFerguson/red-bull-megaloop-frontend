@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/main.css';
-import AppComponent, { type AppProps } from '@app/app.component';
-import type { CustomScriptEnvironment, CustomScriptLocalisations, } from '@types';
+import AppComponent, {type AppProps} from '@app/app.component';
+import type {CustomScriptEnvironment, CustomScriptLocalisations,} from '@types';
+import { CosmosTheme } from '@enums/cosmos-theme.enum';
 
 const root = document.getElementById('root') as HTMLElement;
 
@@ -68,6 +69,7 @@ const appProps: AppProps = {
     bottomSpacing: 'medium',
     localisations: testLocalisations,
     showGridLines: false,
+    theme: CosmosTheme.light
 };
 
 if (root) {

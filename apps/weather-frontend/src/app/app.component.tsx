@@ -10,6 +10,8 @@ import type { CustomScriptLocalisations } from '@types';
 import LocalisationsContext from '../contexts/localisations.context';
 import GridHelper from '@app/components/grid-helper/grid-helper.component';
 import { TenantCredentials } from '@shared/models/tenant-credentials.model';
+import { CosmosMode } from '@cosmos/web-scoped/react';
+import { CosmosTheme } from '@enums/cosmos-theme.enum';
 
 export type AppProps = {
     topSpacing: string;
@@ -19,6 +21,7 @@ export type AppProps = {
     assetId: string;
     tenantCredentials: TenantCredentials;
     localisations: CustomScriptLocalisations;
+    theme: CosmosTheme;
     showGridLines?: boolean;
 };
 
@@ -31,6 +34,7 @@ const App: React.FC<AppProps> = ({
     assetId,
     tenantCredentials,
     localisations,
+    theme = CosmosTheme.dark,
     showGridLines = false,
 }: AppProps) => {
     // Panel Spacing Configuration
@@ -46,6 +50,7 @@ const App: React.FC<AppProps> = ({
     const setAssetUrl = useAppStore((state) => state.setAssetUrl);
     const setAssetId = useAppStore((state) => state.setAssetId);
     const setTenantCredentials = useAppStore((state) => state.setTenantCredentials);
+    const setTheme = useAppStore((state) => state.setTheme);
 
     useEffect(() => {
         if (!isNil(apiUrl) && !isEmpty(apiUrl)) {
@@ -83,12 +88,23 @@ const App: React.FC<AppProps> = ({
         setTenantCredentials,
     ]);
 
+    useEffect(() => {
+        if (!isEmpty(theme)) {
+            setTheme(theme);
+        }
+    }, [
+        theme,
+        setTheme,
+    ]);
+
     return (
         <div className={classes}>
             <LocalisationsContext.Provider value={localisations}>
                 <GridHelper shouldDisplay={showGridLines} />
                 <div className="app-container">
-                    <RouterProvider router={router} />
+                    <CosmosMode mode={theme} >
+                        <RouterProvider router={router} />
+                    </CosmosMode>
                 </div>
             </LocalisationsContext.Provider>
         </div>

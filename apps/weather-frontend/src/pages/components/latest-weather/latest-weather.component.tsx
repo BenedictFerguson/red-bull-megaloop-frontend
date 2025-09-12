@@ -12,8 +12,14 @@ import { LatestWeatherState } from '@stores/latest-weather/latest-weather.state'
 import {
     convertWindDirectionInDegreesToCompassValues
 } from '@shared/helpers/convert-wind-direction-in-degrees-to-compass-values.helper';
+import { CosmosTheme } from '@enums/cosmos-theme.enum';
 
-const WindSpeedGauge = ({ windSpeed }) => {
+interface WindSpeedGaugeProps {
+    windSpeed: number;
+    theme: CosmosTheme;
+}
+
+const WindSpeedGauge = ({ windSpeed, theme }: WindSpeedGaugeProps) => {
     // --- Define constants for our coordinate system ---
     const maxSpeed = 70;
     const indicatorOffset = 11; // The indicator's own center is at x=11
@@ -33,14 +39,19 @@ const WindSpeedGauge = ({ windSpeed }) => {
     // 3. Adjust for the indicator's own offset to center it correctly
     const xPosition = positionOnBar - indicatorOffset;
 
+    const graphMarkerLightThemeColour = 'black';
+    const graphMarkerDarkThemeColour = "#F3F3F3";
+    const graphMarkerColour = theme === CosmosTheme.dark ? graphMarkerDarkThemeColour : theme === CosmosTheme.light ? graphMarkerLightThemeColour : 'F3F3F3';
+
+
     return (
         <svg width="100%" height="15" viewBox="0 0 400 15" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             {/* Static background markers */}
-            <rect x="11" y="0" width="2" height="15" fill="#F3F3F3" fillOpacity="0.15"/>
-            <rect x="81" y="0" width="2" height="15" fill="#F3F3F3" fillOpacity="0.15"/>
-            <rect x="151" y="0" width="2" height="15" fill="#F3F3F3" fillOpacity="0.15"/>
-            <rect x="291" y="0" width="2" height="15" fill="#F3F3F3" fillOpacity="0.15"/>
-            <rect x="361" y="0" width="2" height="15" fill="#F3F3F3" fillOpacity="0.15"/>
+            <rect x="11" y="0" width="2" height="15" fill={graphMarkerColour} fillOpacity="0.15"/>
+            <rect x="81" y="0" width="2" height="15" fill={graphMarkerColour} fillOpacity="0.15"/>
+            <rect x="151" y="0" width="2" height="15" fill={graphMarkerColour} fillOpacity="0.15"/>
+            <rect x="291" y="0" width="2" height="15" fill={graphMarkerColour} fillOpacity="0.15"/>
+            <rect x="361" y="0" width="2" height="15" fill={graphMarkerColour} fillOpacity="0.15"/>
 
             {/* Movable indicator group */}
             <g transform={`translate(${xPosition} 0)`}>
@@ -54,6 +65,7 @@ const WindSpeedGauge = ({ windSpeed }) => {
 const LatestWeatherComponent: React.FC = () => {
     const apiUrl = useAppStore((state: AppState) => state.apiUrl);
     const tenantCredentials = useAppStore((state: AppState) => state.tenantCredentials);
+    const theme = useAppStore((state: AppState) => state.theme);
 
     useEffect(() => {
         WeatherResultsService.getInstance().getLatestKsnWindWeatherData();
@@ -72,18 +84,21 @@ const LatestWeatherComponent: React.FC = () => {
     if (isLoadingLatestWeather) {
         return (
             <div className="latest-weather-container h-[300px] justify-center">
-                <CosmosSpinner appearance="light" />
+                <CosmosSpinner  />
             </div>
         )
     }
 
     const compassLength = 64;
 
+    const compassLightThemeColour = 'black';
+    const compassDarkThemeColour = "#FBFCFF";
+    const compassColour = theme === CosmosTheme.dark ? compassDarkThemeColour : theme === CosmosTheme.light ? compassLightThemeColour : 'white';
+
     return (
-        <div className="latest-weather-container">
+        <div className={`latest-weather-container ${theme}`}>
             <div className="wind-direction-container">
                 <CosmosText
-                    appearance="light"
                     kind="subtle"
                     size="x-small"
                     spacing="none"
@@ -93,19 +108,18 @@ const LatestWeatherComponent: React.FC = () => {
                 </CosmosText>
                 <div className="compass-container">
                     <svg width={compassLength} height={compassLength} viewBox={`0 0 ${compassLength} ${compassLength}`} fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M31.6165 18.8743L22.0904 43.7598C21.9342 44.1684 22.3841 44.5432 22.7577 44.3155L31.7716 38.8181C31.9187 38.728 32.104 38.7283 32.2511 38.8191L41.2408 44.3501C41.6135 44.5798 42.0652 44.2065 41.9102 43.797L32.4741 18.876C32.3245 18.4816 31.7672 18.4805 31.6165 18.8743Z" fill="white" transform={`rotate(${windDirection+180},${compassLength/2},${compassLength/2})`}/>
+                        <path d="M31.6165 18.8743L22.0904 43.7598C21.9342 44.1684 22.3841 44.5432 22.7577 44.3155L31.7716 38.8181C31.9187 38.728 32.104 38.7283 32.2511 38.8191L41.2408 44.3501C41.6135 44.5798 42.0652 44.2065 41.9102 43.797L32.4741 18.876C32.3245 18.4816 31.7672 18.4805 31.6165 18.8743Z" fill={compassColour} transform={`rotate(${windDirection+180},${compassLength/2},${compassLength/2})`}/>
                         <path d="M32 59.2478C47.3039 59.2478 59.7102 46.8247 59.7102 31.5C59.7102 16.1753 47.3039 3.7522 32 3.7522C16.6961 3.7522 4.28976 16.1753 4.28976 31.5C4.28976 46.8247 16.6961 59.2478 32 59.2478Z" stroke="url(#paint0_linear_171_4213)" stroke-width="6.25" stroke-miterlimit="1"/>
-                        <path d="M30.3494 12.1794V7.93945H31.2944L32.7875 10.7115V7.93945H33.6506V12.1794H32.7245L31.2125 9.36325V12.1794H30.3494Z" fill="white"/>
+                        <path d="M30.3494 12.1794V7.93945H31.2944L32.7875 10.7115V7.93945H33.6506V12.1794H32.7245L31.2125 9.36325V12.1794H30.3494Z" fill={compassColour}/>
                         <defs>
                             <linearGradient id="paint0_linear_171_4213" x1="22.4826" y1="43.6972" x2="14.86" y2="51.3199" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#FBFCFF"/>
+                                <stop stop-color={compassColour}/>
                                 <stop offset="0.408" stop-color="#FFCE50"/>
                             </linearGradient>
                         </defs>
                     </svg>
                 </div>
                 <CosmosText
-                    appearance="light"
                     kind="normal"
                     size="small"
                     spacing="none"
@@ -115,10 +129,10 @@ const LatestWeatherComponent: React.FC = () => {
                 </CosmosText>
             </div>
             <div className="wind-speed-status-container">
-                <CosmosText appearance="light" kind="subtle" weight="regular" size="x-small">Wind Speed Status</CosmosText>
+                <CosmosText kind="subtle" weight="regular" size="x-small">Wind Speed Status</CosmosText>
                 <div className="windspeed-bar">
                     <div className="windspeed-graph">
-                        <WindSpeedGauge windSpeed={35} />
+                        <WindSpeedGauge windSpeed={35} theme={theme} />
                     </div>
                     <div className="wind-speed-status-bar" style={
                         {
@@ -128,11 +142,10 @@ const LatestWeatherComponent: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="separator"></div>
+            <div className={`separator ${theme}`}></div>
             <div className="wind-data-row">
                 <div>
                     <CosmosText
-                        appearance="light"
                         kind="subtle"
                         size="x-small"
                         spacing="none"
@@ -141,7 +154,6 @@ const LatestWeatherComponent: React.FC = () => {
                         Wind Speed
                     </CosmosText>
                     <CosmosText
-                        appearance="light"
                         kind="normal"
                         size="small"
                         spacing="none"
@@ -152,7 +164,6 @@ const LatestWeatherComponent: React.FC = () => {
                 </div>
                 <div>
                     <CosmosText
-                        appearance="light"
                         kind="subtle"
                         size="x-small"
                         spacing="none"
@@ -161,7 +172,6 @@ const LatestWeatherComponent: React.FC = () => {
                         Gust Speed
                     </CosmosText>
                     <CosmosText
-                        appearance="light"
                         kind="normal"
                         size="small"
                         spacing="none"
@@ -174,7 +184,6 @@ const LatestWeatherComponent: React.FC = () => {
             <div className="wind-data-row">
                 <div>
                     <CosmosText
-                        appearance="light"
                         kind="subtle"
                         size="x-small"
                         spacing="none"
@@ -183,7 +192,6 @@ const LatestWeatherComponent: React.FC = () => {
                         Temperature
                     </CosmosText>
                     <CosmosText
-                        appearance="light"
                         kind="normal"
                         size="small"
                         spacing="none"
@@ -194,7 +202,6 @@ const LatestWeatherComponent: React.FC = () => {
                 </div>
                 <div>
                     <CosmosText
-                        appearance="light"
                         kind="subtle"
                         size="x-small"
                         spacing="none"
@@ -203,7 +210,6 @@ const LatestWeatherComponent: React.FC = () => {
                         WindChill
                     </CosmosText>
                     <CosmosText
-                        appearance="light"
                         kind="normal"
                         size="small"
                         spacing="none"

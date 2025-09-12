@@ -1,5 +1,11 @@
 .latest-weather-container {
-    @apply bg-[var(--cosmos-color-surface-glass-light-5,rgba(255,255,255,0.05))];
+    &.light {
+        @apply bg-[var(--cosmos-color-surface-glass-dark-5,rgba(255,255,255,0.05))];
+    }
+    &.dark {
+        @apply bg-[var(--cosmos-color-surface-glass-light-5,rgba(255,255,255,0.05))];
+    }
+
     @apply p-[var(--cosmos-spacing-xx-loose,40px)] rounded-[var(--cosmos-radius-large,8px)];
     @apply w-full flex flex-col items-center gap-[var(--cosmos-spacing-tight,12px)];
 
@@ -31,7 +37,14 @@
 
     .separator {
         @apply h-0 flex-none self-stretch flex-grow-0;
-        @apply border-[1px] border-solid border-[var(--cosmos-color-surface-glass-light-10,rgba(255,255,255,0.1))];
+        @apply border-[1px] border-solid;
+
+        &.dark {
+            @apply border-[var(--cosmos-color-surface-glass-light-10,rgba(255,255,255,0.1))];
+        }
+        &.light {
+            @apply border-[var(--cosmos-color-surface-glass-dark-10,rgba(255,255,255,0.1))];
+        }
     }
 
     .wind-data-row {
